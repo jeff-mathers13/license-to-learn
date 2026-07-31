@@ -1,0 +1,3653 @@
+[
+ {
+  "section": "Air Law",
+  "topic": "101.01 Definition of night",
+  "terms": [
+   "civil twilight"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "202.26 Certificate of Registration carriage",
+  "terms": [
+   "certificate of registration"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "401.03 Licence/medical carriage",
+  "terms": [
+   "carry.*licence",
+   "produce.*licence"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "401.05 Recency / passenger currency",
+  "terms": [
+   "takeoffs and 5 landings",
+   "5 takeoffs"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "404 Medical certificate categories/validity",
+  "terms": [
+   "medical certificate"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "601 Airspace classification",
+  "terms": [
+   "class c airspace",
+   "class d airspace",
+   "class f",
+   "airspace class"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "601.03 Transponder airspace",
+  "terms": [
+   "transponder airspace",
+   "functioning transponder",
+   "transponder.*generally required"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "601.15 Forest fire restrictions",
+  "terms": [
+   "forest fire"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Air Law",
+  "topic": "601.19/20 Lasers, bright light",
+  "terms": [
+   "laser",
+   "bright light"
+  ],
+  "priority": "P3"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.01.1 Reckless or negligent operation",
+  "terms": [
+   "reckless",
+   "negligent"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.02 Fitness of flight crew",
+  "terms": [
+   "fitness of flight crew",
+   "fit to fly"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.03 Alcohol or drugs - crew",
+  "terms": [
+   "8-hour",
+   "eight hour",
+   "alcohol"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.06 Smoking",
+  "terms": [
+   "smoking"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.08 Portable electronic devices",
+  "terms": [
+   "portable electronic",
+   "electronic device"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.09 Fuelling with engines running",
+  "terms": [
+   "fuelling with engine",
+   "fueling with engine"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.10 Starting and ground running engines",
+  "terms": [
+   "ground running",
+   "starting and ground"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.11 Aircraft icing / clean aircraft concept",
+  "terms": [
+   "frost",
+   "clean aircraft"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.12/13 Overflight of built-up areas",
+  "terms": [
+   "built-up area",
+   "built up area"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.14 Minimum altitudes and distances",
+  "terms": [
+   "1,000 ft above the highest obstacle",
+   "500 ft from any person"
+  ],
+  "priority": "ESSENTIAL-VERIFY"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.15 Permissible low altitude flight",
+  "terms": [
+   "permissible low altitude",
+   "below the normal minimum altitude",
+   "below minimum altitude"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.19 Right-of-way",
+  "terms": [
+   "right of way",
+   "right-of-way"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.20 Right-of-way on water",
+  "terms": [
+   "on the water"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.21 Avoidance of collision",
+  "terms": [
+   "avoidance of collision"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.22 Towing",
+  "terms": [
+   "towing"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.23 Dropping of objects",
+  "terms": [
+   "dropping",
+   "drop an object"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.24 Formation flight",
+  "terms": [
+   "formation flight"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.25 Entering or leaving aircraft in flight",
+  "terms": [
+   "entering or leaving"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.26 Parachute descents",
+  "terms": [
+   "parachute"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.27/28 Aerobatics",
+  "terms": [
+   "aerobatic"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.31 Compliance with ATC instructions",
+  "terms": [
+   "atc clearance",
+   "read.*back",
+   "readback"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.32 Airspeed limitations",
+  "terms": [
+   "airspeed limitation",
+   "250 kt",
+   "250 knots"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.34 Cruising altitudes (hemispheric rule)",
+  "terms": [
+   "hemispheric",
+   "odd thousand",
+   "even thousand"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.35-37 Altimeter setting procedures",
+  "terms": [
+   "altimeter setting",
+   "transition altitude"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.40 Landing/takeoff at aerodrome at night",
+  "terms": [
+   "at night"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.60 Equipment - power-driven aircraft",
+  "terms": [
+   "required.*instrument",
+   "minimum.*instrument"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.61 Survival equipment - over land",
+  "terms": [
+   "survival equipment",
+   "survival kit"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.62/63 Life preservers and life rafts",
+  "terms": [
+   "life preserver",
+   "life raft",
+   "flotation"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.71 Pre-flight information",
+  "terms": [
+   "pre-flight information",
+   "preflight information"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.73-79 Flight plan / itinerary / arrival report",
+  "terms": [
+   "flight plan",
+   "itinerary"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.86 Carry-on baggage and cargo",
+  "terms": [
+   "carry-on",
+   "baggage secur"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.88 Fuel requirements",
+  "terms": [
+   "reserve"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.89 Passenger briefings",
+  "terms": [
+   "passenger briefing"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.96 Operations at/near aerodrome, circuits",
+  "terms": [
+   "circuit"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.97-103 MF reporting procedures",
+  "terms": [
+   "mandatory frequency",
+   "broadcast.*intentions"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.105 Noise operating criteria",
+  "terms": [
+   "noise abatement"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.114/115 VFR minima controlled/uncontrolled",
+  "terms": [
+   "flight visibility",
+   "clear of cloud"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.116 VFR OTT",
+  "terms": [
+   "vfr over-the-top",
+   "vfr-ott",
+   "over-the-top"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.117 Special VFR",
+  "terms": [
+   "special vfr"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.133 Language in radiocommunications",
+  "terms": [
+   "language used",
+   "official language"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.136 Continuous listening watch",
+  "terms": [
+   "listening watch"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.138 Two-way radiocomm failure VFR",
+  "terms": [
+   "radio failure",
+   "communication failure",
+   "7600"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.143 Emergency radio frequency",
+  "terms": [
+   "121.5"
+  ],
+  "priority": "ESSENTIAL-VERIFY"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.144 Interception signals",
+  "terms": [
+   "intercept"
+  ],
+  "priority": "ESSENTIAL-VERIFY"
+ },
+ {
+  "section": "Air Law",
+  "topic": "602.145 ADIZ",
+  "terms": [
+   "adiz"
+  ],
+  "priority": "ESSENTIAL-VERIFY"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.03 Flight authority / C of A",
+  "terms": [
+   "certificate of airworthiness",
+   "flight authority"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.04 Availability of flight manual",
+  "terms": [
+   "flight manual"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.08 Unserviceable/removed equipment (MEL)",
+  "terms": [
+   "minimum equipment list",
+   "inoperative"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.17 Position and anti-collision lights",
+  "terms": [
+   "position light",
+   "anti-collision"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.22/24/25/28 Belts, harness, child restraint",
+  "terms": [
+   "safety belt",
+   "seat belt",
+   "shoulder harness",
+   "child restraint"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.29 Flight control locks",
+  "terms": [
+   "control lock",
+   "gust lock"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.31/32 Oxygen equipment and use",
+  "terms": [
+   "oxygen"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.35 Transponder / Mode C",
+  "terms": [
+   "transponder"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.38/40 ELT",
+  "terms": [
+   "elt",
+   "406 mhz"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.84-88 Maintenance, maintenance release",
+  "terms": [
+   "maintenance release",
+   "maintenance schedule",
+   "elementary work"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Air Law",
+  "topic": "605.94/95 Journey log",
+  "terms": [
+   "journey log"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "606.02 Liability insurance",
+  "terms": [
+   "liability insurance",
+   "insurance"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "TSB occurrence reporting",
+  "terms": [
+   "tsb",
+   "reportable"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Wake turbulence separation",
+  "terms": [
+   "wake turbulence"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Radar service - clock position system",
+  "terms": [
+   "clock position",
+   "o'clock"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Air Law",
+  "topic": "LAHSO / runway incursion prevention",
+  "terms": [
+   "lahso",
+   "runway incursion",
+   "intersecting runway"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Common Frequency Areas (CFA)",
+  "terms": [
+   "common frequency"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Air Law",
+  "topic": "VFR holding procedures",
+  "terms": [
+   "holding procedure",
+   "vfr holding"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Customs / international flight",
+  "terms": [
+   "customs"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Special Flight Operations Certificate",
+  "terms": [
+   "special flight operations"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Operator vs PIC responsibility",
+  "terms": [
+   "operator.*responsib",
+   "pilot-in-command.*responsib"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Aerodrome vs airport definition",
+  "terms": [
+   "aerodrome.*airport",
+   "certified aerodrome"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Radio station licence",
+  "terms": [
+   "radio station licence",
+   "radio licence"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Accident site / wreckage preservation",
+  "terms": [
+   "wreckage"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Meridian / prime meridian / longitude",
+  "terms": [
+   "meridian",
+   "longitude"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Latitude / equator",
+  "terms": [
+   "latitude"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Rhumb line / great circle",
+  "terms": [
+   "rhumb",
+   "great circle"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Variation",
+  "terms": [
+   "variation"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Isogonal",
+  "terms": [
+   "isogonic",
+   "isogonal"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Agonic line",
+  "terms": [
+   "agonic"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Deviation / compass correction card",
+  "terms": [
+   "deviation",
+   "correction card"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Track vs heading",
+  "terms": [
+   "true track",
+   "magnetic track",
+   "heading vs"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Airspeed: IAS/CAS/TAS",
+  "terms": [
+   "indicated airspeed",
+   "calibrated airspeed",
+   "true airspeed"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Ground speed",
+  "terms": [
+   "groundspeed",
+   "ground speed"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Air position / ground position",
+  "terms": [
+   "air position",
+   "ground position"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Bearing",
+  "terms": [
+   "bearing"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Wind velocity / drift",
+  "terms": [
+   "drift"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "VTA - Transverse Mercator",
+  "terms": [
+   "transverse mercator",
+   "vta"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "VNC - Lambert Conformal Conic",
+  "terms": [
+   "lambert",
+   "vnc"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Topographical symbols",
+  "terms": [
+   "chart symbol",
+   "magenta dashed"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Elevation and contours",
+  "terms": [
+   "contour"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "AIP Supplement",
+  "terms": [
+   "aip supplement"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Locating position by lat/long",
+  "terms": [
+   "latitude and longitude"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Time zones / UTC conversion",
+  "terms": [
+   "utc",
+   "coordinated universal"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Measurement of track and distance",
+  "terms": [
+   "measure.*track",
+   "measure.*distance"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Map reading / checkpoints",
+  "terms": [
+   "checkpoint",
+   "pinpoint"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Visual angle of departure / setting heading",
+  "terms": [
+   "angle of departure",
+   "setting heading"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Position lines to obtain a fix",
+  "terms": [
+   "position line",
+   "obtain a fix"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Ground speed checks and ETA revision",
+  "terms": [
+   "eta",
+   "revise.*estimate"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Determining drift by 10-degree lines",
+  "terms": [
+   "10\u00b0 line",
+   "10 degree line",
+   "drift by 10"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Double track error method",
+  "terms": [
+   "double track"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Opening and closing angles",
+  "terms": [
+   "closing angle",
+   "opening angle"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Visual alteration method",
+  "terms": [
+   "visual alteration"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Diversion to alternate",
+  "terms": [
+   "diversion",
+   "divert"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Return to departure (reciprocal track)",
+  "terms": [
+   "reciprocal"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Low level navigation",
+  "terms": [
+   "low level navigation"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Dead reckoning / triangle of velocities",
+  "terms": [
+   "dead reckoning",
+   "wind triangle",
+   "triangle of velocit"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Procedures when lost",
+  "terms": [
+   "uncertain of their position",
+   "lost procedure"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Compass errors (turning/acceleration)",
+  "terms": [
+   "ands",
+   "turning error",
+   "acceleration error"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "1-in-60 rule",
+  "terms": [
+   "1-in-60",
+   "1 in 60"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Pressure/density/true altitude",
+  "terms": [
+   "pressure altitude",
+   "density altitude",
+   "true altitude"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Fuel consumption and conversions",
+  "terms": [
+   "fuel consumption",
+   "fuel required"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Factors affecting choice of route",
+  "terms": [
+   "choice of route",
+   "route selection"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "NOTAM",
+  "terms": [
+   "notam"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Canada Flight Supplement",
+  "terms": [
+   "canada flight supplement"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Documents to be carried",
+  "terms": [
+   "documents.*carried",
+   "documents.*need to have",
+   "documents.*available"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Electronic Flight Bag (EFB)",
+  "terms": [
+   "electronic flight bag",
+   "efb"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Radio theory: LF/HF/VHF characteristics",
+  "terms": [
+   "low frequency",
+   "very high frequency",
+   "line-of-sight",
+   "line of sight"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "GNSS/GPS principles and limitations",
+  "terms": [
+   "gps",
+   "gnss"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Transponder codes",
+  "terms": [
+   "7700",
+   "7600",
+   "7500"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "ADS-B",
+  "terms": [
+   "ads-b",
+   "automatic dependent surveillance"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Navigation",
+  "topic": "ELT (nav context)",
+  "terms": [
+   "emergency locator"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Primary/Secondary Surveillance Radar",
+  "terms": [
+   "secondary surveillance",
+   "primary surveillance"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Navigation",
+  "topic": "TCAS",
+  "terms": [
+   "tcas",
+   "traffic alert and collision"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Navigation",
+  "topic": "VOR",
+  "terms": [
+   "vor"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "NDB/ADF",
+  "terms": [
+   "ndb",
+   "adf"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "DME",
+  "terms": [
+   "dme"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Crosswind/headwind components",
+  "terms": [
+   "crosswind component",
+   "headwind component"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Navigation",
+  "topic": "Winds aloft forecast (FB/FD)",
+  "terms": [
+   "winds aloft"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Atmosphere composition",
+  "terms": [
+   "composition of the atmosphere",
+   "nitrogen"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Vertical structure / tropopause",
+  "terms": [
+   "tropopause",
+   "stratosphere"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Standard atmosphere",
+  "terms": [
+   "standard atmosphere",
+   "15\u00b0c",
+   "29.92"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Density and pressure",
+  "terms": [
+   "air density"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Units of pressure measurement",
+  "terms": [
+   "hectopascal",
+   "inches of mercury",
+   "in hg"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Station vs sea level pressure",
+  "terms": [
+   "station pressure",
+   "sea level pressure"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Pressure systems (high/low)",
+  "terms": [
+   "low pressure",
+   "high pressure"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Isobars",
+  "terms": [
+   "isobar"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Pressure altitude",
+  "terms": [
+   "pressure altitude"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Density altitude",
+  "terms": [
+   "density altitude"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Altimeter settings / high-to-low",
+  "terms": [
+   "high to low",
+   "altimeter setting"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Heating: convection/advection/radiation",
+  "terms": [
+   "convection",
+   "advection",
+   "radiation"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Temperature variation with altitude / lapse rate",
+  "terms": [
+   "lapse rate"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Inversions",
+  "terms": [
+   "inversion"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Relative humidity and dewpoint",
+  "terms": [
+   "dew point",
+   "dewpoint"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Sublimation and condensation",
+  "terms": [
+   "sublimation"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Cloud formation",
+  "terms": [
+   "cloud form"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Precipitation types",
+  "terms": [
+   "precipitation"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Saturated vs dry adiabatic lapse rate",
+  "terms": [
+   "adiabatic"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Stability and instability",
+  "terms": [
+   "stable air",
+   "unstable air",
+   "stability"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Lifting processes / orographic",
+  "terms": [
+   "orographic",
+   "lifting"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Subsidence and convergence",
+  "terms": [
+   "subsidence",
+   "convergence"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Cloud classification and types",
+  "terms": [
+   "cumulonimbus",
+   "stratus",
+   "cumulus",
+   "lenticular"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Fog formation and types",
+  "terms": [
+   "fog"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Haze and smoke",
+  "terms": [
+   "haze",
+   "smoke"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Blowing obstructions to vision",
+  "terms": [
+   "blowing snow",
+   "blowing dust"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Turbulence: convective/mechanical/orographic",
+  "terms": [
+   "mechanical turbulence",
+   "convective turbulence"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Wind shear",
+  "terms": [
+   "wind shear"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Turbulence reporting criteria",
+  "terms": [
+   "turbulence.*intensity",
+   "light.*moderate.*severe"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Pressure gradient",
+  "terms": [
+   "pressure gradient"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Coriolis / earth's rotation",
+  "terms": [
+   "coriolis"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Veer and back",
+  "terms": [
+   "veer",
+   "backing"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Squalls and gusts",
+  "terms": [
+   "squall",
+   "gust"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Diurnal effects",
+  "terms": [
+   "diurnal"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Land and sea breezes",
+  "terms": [
+   "sea breeze",
+   "land breeze"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Katabatic and anabatic",
+  "terms": [
+   "katabatic",
+   "anabatic"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Topographical effects / mountain wave",
+  "terms": [
+   "mountain wave",
+   "venturi"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Air masses",
+  "terms": [
+   "air mass"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Fronts: types and weather",
+  "terms": [
+   "cold front",
+   "warm front",
+   "occluded"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Trowal",
+  "terms": [
+   "trowal"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "In-flight icing / freezing rain",
+  "terms": [
+   "freezing rain",
+   "freezing drizzle",
+   "clear ice",
+   "rime"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Hoar frost",
+  "terms": [
+   "hoar frost",
+   "hoarfrost"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Impact icing (engine)",
+  "terms": [
+   "impact icing",
+   "carburettor icing",
+   "carburetor icing",
+   "carb icing"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Thunderstorm development and structure",
+  "terms": [
+   "thunderstorm"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Thunderstorm hazards: downbursts/microbursts",
+  "terms": [
+   "microburst",
+   "downburst",
+   "gust front"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Hail and lightning",
+  "terms": [
+   "hail",
+   "lightning"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Squall lines",
+  "terms": [
+   "squall line"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Hurricane / tornado / dust devils",
+  "terms": [
+   "hurricane",
+   "tornado",
+   "dust devil"
+  ],
+  "priority": "P3"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "AWOS / LWIS / AUTO",
+  "terms": [
+   "awos",
+   "lwis",
+   "automated weather"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "FSS / FIC / AWBS / CFPS",
+  "terms": [
+   "flight service station",
+   "flight information centre",
+   "cfps"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "ATIS",
+  "terms": [
+   "atis"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "METAR decoding",
+  "terms": [
+   "metar"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "PIREP",
+  "terms": [
+   "pirep"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "TAF",
+  "terms": [
+   "taf"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "GFA",
+  "terms": [
+   "gfa",
+   "graphical area forecast"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Upper winds and temp forecast (FB)",
+  "terms": [
+   "upper wind",
+   "winds aloft"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "AIRMET",
+  "terms": [
+   "airmet"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "SIGMET",
+  "terms": [
+   "sigmet"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Surface weather maps / prognostic charts",
+  "terms": [
+   "prognostic",
+   "surface weather map"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Ceiling definition",
+  "terms": [
+   "ceiling"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Prevailing visibility",
+  "terms": [
+   "prevailing visibility"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "CAVOK",
+  "terms": [
+   "cavok"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Jet stream / CAT",
+  "terms": [
+   "jet stream",
+   "clear air turbulence"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Chinook / foehn",
+  "terms": [
+   "chinook",
+   "foehn"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Whiteout",
+  "terms": [
+   "whiteout"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Contrails",
+  "terms": [
+   "contrail"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Volcanic ash",
+  "terms": [
+   "volcanic ash"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Mountain obscuration",
+  "terms": [
+   "mountain obscuration"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Ice fog",
+  "terms": [
+   "ice fog"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Meteorology",
+  "topic": "Cloud base rule of thumb",
+  "terms": [
+   "cloud base",
+   "spread"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Types of airframe construction",
+  "terms": [
+   "airframe construction",
+   "monocoque",
+   "semi-monocoque"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Landing gear types",
+  "terms": [
+   "tricycle",
+   "taildragger",
+   "landing gear"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Brakes",
+  "terms": [
+   "brake"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Flaps: types and effects",
+  "terms": [
+   "flap"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Four-stroke cycle",
+  "terms": [
+   "four stroke",
+   "four-stroke",
+   "intake.*compression"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Electric motors / electric aeroplane",
+  "terms": [
+   "electric motor",
+   "electric aeroplane"
+  ],
+  "priority": "P3"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Methods of engine cooling",
+  "terms": [
+   "air-cooled",
+   "engine cooling",
+   "cowl flap"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Magneto principle / dual ignition",
+  "terms": [
+   "magneto"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Exhaust systems",
+  "terms": [
+   "exhaust"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Turbocharging",
+  "terms": [
+   "turbocharg"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Effects of density altitude on engine",
+  "terms": [
+   "density altitude.*performance",
+   "density altitude.*engine"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Engine instruments (CHT/EGT/tach/MP)",
+  "terms": [
+   "cylinder head temperature",
+   "exhaust gas temperature",
+   "tachometer",
+   "manifold pressure"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Carburation and mixture",
+  "terms": [
+   "mixture",
+   "carburett",
+   "carburet"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Carb heat and its effect on mixture",
+  "terms": [
+   "carb heat",
+   "carburettor heat",
+   "carburetor heat"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Fuel injection: principle, icing, alternate air",
+  "terms": [
+   "fuel injection",
+   "alternate air"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Generator, alternator, battery",
+  "terms": [
+   "alternator",
+   "battery",
+   "generator"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Lighting",
+  "terms": [
+   "position light",
+   "landing light",
+   "strobe"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Ammeter and load meter",
+  "terms": [
+   "ammeter",
+   "load meter",
+   "loadmeter"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Bus bars",
+  "terms": [
+   "bus bar",
+   "busbar"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Circuit breakers and fuses",
+  "terms": [
+   "circuit breaker",
+   "fuse"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Grounding and bonding",
+  "terms": [
+   "grounding",
+   "bonding",
+   "static discharge"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Oil: types, viscosity, grades, seasonal",
+  "terms": [
+   "viscosity",
+   "oil grade"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Oil system purposes and methods",
+  "terms": [
+   "oil system",
+   "lubricat"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Oil cooler, filters, venting",
+  "terms": [
+   "oil cooler",
+   "oil filter"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Fuel types, colour, properties",
+  "terms": [
+   "100ll",
+   "avgas",
+   "fuel colour",
+   "fuel color"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Fuel density and weight",
+  "terms": [
+   "6 lb/gal",
+   "fuel weight"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Fuel contamination and draining",
+  "terms": [
+   "contamination",
+   "water in the fuel",
+   "fuel drain",
+   "sump"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Fuel tank location and venting",
+  "terms": [
+   "fuel vent",
+   "fuel tank"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Detonation",
+  "terms": [
+   "detonation"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Vapour lock",
+  "terms": [
+   "vapour lock",
+   "vapor lock"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Primers",
+  "terms": [
+   "primer"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Fuel management",
+  "terms": [
+   "fuel management",
+   "fuel selector"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "MOGAS",
+  "terms": [
+   "mogas",
+   "automobile gasoline"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Winter fuel considerations",
+  "terms": [
+   "winter.*fuel",
+   "fuel.*winter"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Oxygen system",
+  "terms": [
+   "oxygen"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Vacuum system",
+  "terms": [
+   "vacuum"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Hydraulic systems",
+  "terms": [
+   "hydraulic"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "De-ice boots / TKS",
+  "terms": [
+   "de-ice boot",
+   "tks",
+   "weeping wing"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Cabin heat / CO risk",
+  "terms": [
+   "carbon monoxide",
+   "heat exchanger"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Static wicks",
+  "terms": [
+   "static wick"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Engine cowling",
+  "terms": [
+   "cowling"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Wheel fairings",
+  "terms": [
+   "wheel fairing",
+   "spat"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Propeller governor / constant speed",
+  "terms": [
+   "governor",
+   "constant-speed",
+   "constant speed"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Airframes/Engines/Systems",
+  "topic": "Propeller feathering",
+  "terms": [
+   "feather"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Bernoulli's theorem",
+  "terms": [
+   "bernoulli"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Newton's laws",
+  "terms": [
+   "newton"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Lift",
+  "terms": [
+   "lift is",
+   "produces lift"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Drag: induced and parasite",
+  "terms": [
+   "induced drag",
+   "parasite drag"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Lift/drag vs angle of attack",
+  "terms": [
+   "angle of attack"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Thrust and weight",
+  "terms": [
+   "four forces",
+   "thrust",
+   "fundamental forces"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Equilibrium",
+  "terms": [
+   "equilibrium"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Centre of pressure",
+  "terms": [
+   "centre of pressure",
+   "center of pressure"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Centrifugal / centripetal",
+  "terms": [
+   "centrifugal",
+   "centripetal"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Load factor and stalling speed",
+  "terms": [
+   "load factor"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Structural limitations / category",
+  "terms": [
+   "utility category",
+   "normal category"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Gust loads",
+  "terms": [
+   "gust load"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Roll upset",
+  "terms": [
+   "roll upset"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Pressure distribution / aerofoil",
+  "terms": [
+   "aerofoil",
+   "airfoil"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Aerodynamic effects of icing",
+  "terms": [
+   "icing.*aerodynamic",
+   "ice.*lift"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Downwash",
+  "terms": [
+   "downwash"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Wingtip vortices",
+  "terms": [
+   "wingtip vortic",
+   "wing tip vortic"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Angle of incidence",
+  "terms": [
+   "angle of incidence"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Propeller efficiency / fixed vs variable pitch",
+  "terms": [
+   "propeller.*pitch",
+   "fixed pitch"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Torque, slipstream, gyroscopic, P-factor",
+  "terms": [
+   "p-factor",
+   "asymmetric thrust",
+   "slipstream"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Wing planform / area / span / chord",
+  "terms": [
+   "planform",
+   "wing area",
+   "chord"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Aspect ratio",
+  "terms": [
+   "aspect ratio"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Camber",
+  "terms": [
+   "camber"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Laminar flow",
+  "terms": [
+   "laminar"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Dihedral / anhedral",
+  "terms": [
+   "dihedral",
+   "anhedral"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Wash in / wash out",
+  "terms": [
+   "washout",
+   "wash-out",
+   "wash out"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Slots and slats",
+  "terms": [
+   "slot",
+   "slat"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Wing fences / stall strips",
+  "terms": [
+   "wing fence",
+   "stall strip"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Spoilers",
+  "terms": [
+   "spoiler"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Canards",
+  "terms": [
+   "canard"
+  ],
+  "priority": "P3"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Longitudinal/lateral/directional stability",
+  "terms": [
+   "longitudinal stability",
+   "lateral stability",
+   "directional stability"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Static vs dynamic stability",
+  "terms": [
+   "static stability",
+   "dynamic stability"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Aeroplane axes and controls",
+  "terms": [
+   "three axes",
+   "aeroplane axes",
+   "axes of"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Adverse yaw / aileron drag",
+  "terms": [
+   "adverse yaw"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Control balancing",
+  "terms": [
+   "mass balance",
+   "balanced control",
+   "control balanc"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Trim and trimming devices",
+  "terms": [
+   "trim tab",
+   "trim"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Critical angle of attack / stall",
+  "terms": [
+   "critical angle",
+   "stall"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Theory of Flight",
+  "topic": "Wing loading",
+  "terms": [
+   "wing loading"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Pitot system",
+  "terms": [
+   "pitot"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Static system / blockage",
+  "terms": [
+   "static port",
+   "static system"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Pitot heat / anti-icing",
+  "terms": [
+   "pitot heat"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Alternate static source",
+  "terms": [
+   "alternate static"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "ASI principle, errors, markings",
+  "terms": [
+   "airspeed indicator"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "ASI colour arcs",
+  "terms": [
+   "white arc",
+   "green arc",
+   "yellow arc",
+   "red line"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "V-speed definitions",
+  "terms": [
+   "vne",
+   "vno",
+   "vfe",
+   "vso",
+   "vs1",
+   "va "
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Vertical Speed Indicator",
+  "terms": [
+   "vertical speed indicator",
+   "vsi"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Altimeter principle and errors",
+  "terms": [
+   "altimeter"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Magnetic compass principle",
+  "terms": [
+   "magnetic compass"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Magnetic dip",
+  "terms": [
+   "magnetic dip"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Compass turning/acceleration errors",
+  "terms": [
+   "ands",
+   "turning error"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Compass deviation / correction card",
+  "terms": [
+   "deviation",
+   "correction card"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Compass swing / serviceability",
+  "terms": [
+   "compass swing",
+   "swung"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Gyroscope: rigidity and precession",
+  "terms": [
+   "precession",
+   "rigidity in space",
+   "gyroscop"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Heading indicator",
+  "terms": [
+   "heading indicator"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Attitude indicator",
+  "terms": [
+   "attitude indicator"
+  ],
+  "priority": "ESSENTIAL-VERIFY"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Turn coordinator / turn and bank",
+  "terms": [
+   "turn coordinator",
+   "turn and bank",
+   "inclinometer",
+   "the ball"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "EFIS / glass cockpit",
+  "terms": [
+   "efis",
+   "glass cockpit"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Instrument scan / control-performance",
+  "terms": [
+   "instrument scan",
+   "scanning"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Unusual attitudes and recovery",
+  "terms": [
+   "unusual attitude"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Loss of visual reference",
+  "terms": [
+   "loss of visual reference",
+   "inadvertent imc"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Instruments",
+  "topic": "Instrument redundancy rationale",
+  "terms": [
+   "redundan"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "PIC responsibilities",
+  "terms": [
+   "pilot-in-command"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Winter operations",
+  "terms": [
+   "winter operation"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Thunderstorm avoidance",
+  "terms": [
+   "thunderstorm.*avoid",
+   "avoid.*thunderstorm"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Mountain flying operations",
+  "terms": [
+   "mountain flying",
+   "ridge"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Collision avoidance / landing lights",
+  "terms": [
+   "landing light",
+   "see and avoid"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Runway numbering",
+  "terms": [
+   "runway number",
+   "runway.*magnetic heading"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Displaced threshold",
+  "terms": [
+   "displaced threshold"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Airport rotating beacon",
+  "terms": [
+   "rotating beacon"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "VASIS / VASI / PAPI",
+  "terms": [
+   "vasi",
+   "papi",
+   "approach slope indicator"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Obstruction marking and lighting",
+  "terms": [
+   "obstruction marking",
+   "obstruction light"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Units of measurement and conversion",
+  "terms": [
+   "conversion",
+   "statute mile",
+   "nautical mile"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Wheelbarrowing",
+  "terms": [
+   "wheelbarrow"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Porpoising",
+  "terms": [
+   "porpois"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Hydroplaning",
+  "terms": [
+   "hydroplan"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Taxiing in wind",
+  "terms": [
+   "taxi"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Sideslips",
+  "terms": [
+   "sideslip",
+   "side slip"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Take-off charts",
+  "terms": [
+   "takeoff chart",
+   "take-off chart",
+   "takeoff distance",
+   "takeoff performance chart"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Crosswind charts",
+  "terms": [
+   "crosswind chart"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "CRFI",
+  "terms": [
+   "crfi",
+   "runway friction"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Cruise / fuel burn charts",
+  "terms": [
+   "cruise chart",
+   "fuel burn chart",
+   "cruise performance chart"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Landing charts",
+  "terms": [
+   "landing chart",
+   "landing distance"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Effect of contamination on distance",
+  "terms": [
+   "slush",
+   "standing water.*runway"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Runway surface / slope effects",
+  "terms": [
+   "runway surface",
+   "upslope",
+   "downslope",
+   "grass runway"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Critical surface contamination",
+  "terms": [
+   "critical surface"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Lift/drag ratio",
+  "terms": [
+   "lift/drag",
+   "lift-to-drag"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Ground effect",
+  "terms": [
+   "ground effect"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Vx best angle of climb",
+  "terms": [
+   "best angle of climb"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Vy best rate of climb",
+  "terms": [
+   "best rate of climb"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Va manoeuvring speed",
+  "terms": [
+   "manoeuvring speed",
+   "maneuvering speed"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Vlo / Vref",
+  "terms": [
+   "vlo",
+   "vref"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Normal/short/soft/rough field technique",
+  "terms": [
+   "short field",
+   "soft field",
+   "rough field"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Gliding for range",
+  "terms": [
+   "best glide",
+   "gliding for range"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Flying for endurance",
+  "terms": [
+   "endurance"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Slow flight",
+  "terms": [
+   "slow flight"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Stall speed vs altitude / true stall speed",
+  "terms": [
+   "stall speed.*altitude",
+   "indicated stall"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Spins and recovery (PARE)",
+  "terms": [
+   "spin",
+   "pare"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Spirals",
+  "terms": [
+   "spiral"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Safe recovery altitudes",
+  "terms": [
+   "recovery altitude"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Bank/speed vs rate/radius of turn",
+  "terms": [
+   "radius of turn",
+   "rate of turn"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Effect of weight/CG change on performance",
+  "terms": [
+   "aft.*cg",
+   "cg.*performance",
+   "forward cg"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "W&B terms: datum, arm, moment",
+  "terms": [
+   "datum",
+   "moment"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Standard weights",
+  "terms": [
+   "standard weight"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Locating CG",
+  "terms": [
+   "center of gravity",
+   "centre of gravity"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "CG limits / envelope",
+  "terms": [
+   "cg envelope",
+   "cg limit"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Empty weight / gross weight / useful load",
+  "terms": [
+   "useful load",
+   "empty weight",
+   "gross weight"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Maximum landing weight",
+  "terms": [
+   "maximum landing weight"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Load adjustment / cargo tie-down",
+  "terms": [
+   "tie-down",
+   "load adjustment"
+  ],
+  "priority": "ESSENTIAL-VERIFY"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Normal and utility category",
+  "terms": [
+   "utility category"
+  ],
+  "priority": "ESSENTIAL-VERIFY"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Zero fuel weight",
+  "terms": [
+   "zero fuel"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Wake turbulence: causes/effects/avoidance",
+  "terms": [
+   "wake turbulence"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "SAR services and ELT use",
+  "terms": [
+   "search and rescue",
+   "srait"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Survival basic techniques",
+  "terms": [
+   "survival"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Clean aircraft concept",
+  "terms": [
+   "clean aircraft"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Frozen contaminants and removal",
+  "terms": [
+   "frost.*remov",
+   "de-icing"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Cold soaking",
+  "terms": [
+   "cold soak"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "De-icing fluid Types I-IV",
+  "terms": [
+   "type i",
+   "type iv",
+   "de-icing fluid"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Aeronautics - Flight Operations",
+  "topic": "Pre-takeoff contamination inspection",
+  "terms": [
+   "contamination inspection",
+   "pre-takeoff inspection"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Hypoxia types and symptoms",
+  "terms": [
+   "hypoxia"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Hyperventilation",
+  "terms": [
+   "hyperventilation"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Time of useful consciousness",
+  "terms": [
+   "time of useful consciousness"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Gas expansion effects",
+  "terms": [
+   "gas expansion",
+   "trapped gas",
+   "barotrauma"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Decompression / SCUBA diving",
+  "terms": [
+   "scuba",
+   "decompression sickness",
+   "diving"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Visual scanning techniques",
+  "terms": [
+   "scanning",
+   "off-center",
+   "off-centre"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Dark adaptation / night vision",
+  "terms": [
+   "dark adaptation",
+   "night vision"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Hearing",
+  "terms": [
+   "hearing"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Orientation and disorientation",
+  "terms": [
+   "disorientation",
+   "the leans",
+   "coriolis illusion"
+  ],
+  "priority": "ESSENTIAL-VERIFY"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Visual illusions",
+  "terms": [
+   "autokinesis",
+   "false horizon",
+   "black hole",
+   "somatogravic"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Positive and negative G",
+  "terms": [
+   "greyout",
+   "blackout",
+   "negative g"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Sleep and fatigue",
+  "terms": [
+   "fatigue",
+   "sleep debt",
+   "circadian"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Anaesthetics",
+  "terms": [
+   "anaesthetic",
+   "anesthetic",
+   "dental"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Blood donation",
+  "terms": [
+   "blood donation",
+   "donating blood"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Individual health and fitness (IMSAFE)",
+  "terms": [
+   "imsafe"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Diet, nutrition and fasting",
+  "terms": [
+   "nutrition",
+   "fasting",
+   "hypoglyc",
+   "blood sugar"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Medications (prescribed and OTC)",
+  "terms": [
+   "over-the-counter",
+   "medication"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Substance use (alcohol, drugs)",
+  "terms": [
+   "alcohol",
+   "8-hour"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Pregnancy",
+  "terms": [
+   "pregnan"
+  ],
+  "priority": "P2"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Heat and cold",
+  "terms": [
+   "heat stress",
+   "hypothermia",
+   "dehydration"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Noise and vibration",
+  "terms": [
+   "vibration",
+   "noise-induced"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Smoking and vaping",
+  "terms": [
+   "smoking",
+   "vaping"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Carbon monoxide",
+  "terms": [
+   "carbon monoxide"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Decision-making process (DECIDE)",
+  "terms": [
+   "decide model",
+   "decision-making"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Situational awareness",
+  "terms": [
+   "situational awareness"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Stress",
+  "terms": [
+   "stress"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Risk management",
+  "terms": [
+   "risk management"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Threat and error management",
+  "terms": [
+   "threat and error"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Hazardous attitudes (all 5)",
+  "terms": [
+   "anti-authority",
+   "invulnerability",
+   "macho",
+   "resignation",
+   "impulsivity"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Workload / attention / information processing",
+  "terms": [
+   "workload",
+   "task saturation",
+   "channelized"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Controls and displays interpretation errors",
+  "terms": [
+   "misread",
+   "interpretation error"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Maps and charts interpretation errors",
+  "terms": [
+   "chart interpretation",
+   "misreading a map",
+   "misreading a chart",
+   "misread a chart",
+   "misinterpreting"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Interaction with automation",
+  "terms": [
+   "automation",
+   "autopilot"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Correct use of checklists",
+  "terms": [
+   "checklist"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Communications with ATS/passengers/ground",
+  "terms": [
+   "communicat.*passenger",
+   "communicat.*ground"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Family relationships / peer pressure",
+  "terms": [
+   "peer pressure",
+   "external pressure",
+   "get-there-itis"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Complacency",
+  "terms": [
+   "complacency"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Normalization of deviance",
+  "terms": [
+   "normalization of deviance"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Chain of errors",
+  "terms": [
+   "chain of error"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Startle response",
+  "terms": [
+   "startle"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Confirmation bias",
+  "terms": [
+   "confirmation bias"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Single-pilot resource management",
+  "terms": [
+   "single-pilot resource"
+  ],
+  "priority": "ESSENTIAL"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Personal minimums",
+  "terms": [
+   "personal minimum"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Human Factors",
+  "topic": "Colour vision deficiency",
+  "terms": [
+   "color vision",
+   "colour vision"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "VFR radio phraseology - standard words and phrases",
+  "terms": [
+   "wilco",
+   "standard word",
+   "standard phrase",
+   "phraseology"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Readback requirements (CAR 602.31)",
+  "terms": [
+   "must be read back",
+   "read back",
+   "readback"
+  ],
+  "priority": "P1"
+ },
+ {
+  "section": "Air Law",
+  "topic": "Aircraft call sign / identification format",
+  "terms": [
+   "call sign",
+   "aircraft identification",
+   "abbreviated call sign"
+  ],
+  "priority": "P1"
+ }
+]
