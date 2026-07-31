@@ -1,0 +1,10 @@
+{
+  "name": "License to Learn — PPL Written Exam Prep",
+  "short_name": "License to Learn",
+  "description": "Canadian PPL/PPAER written exam study tool",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E7EDEA",
+  "theme_color": "#146B73",
+  "icons": []
+}
