@@ -35,9 +35,9 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
+          app_location: "dist" # Already-built static content (skip_app_build below means this is used as-is, not as a build source)
           api_location: "" # Api source code path - optional
-          output_location: "dist" # Built app content directory - optional
+          output_location: "" # unused when skip_app_build is true
           skip_app_build: true # We build ourselves above (ubuntu-latest, modern glibc) instead of Oryx, which errors on this rollup version
           ###### End of Repository/Build Configurations ######
 

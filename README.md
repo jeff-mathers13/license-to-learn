@@ -32,7 +32,8 @@ npm run preview   # preview the production build locally
 ## Project structure
 
 ```
-staticwebapp.config.json  # SPA routing fallback for Azure SWA; also where auth-gated routes would go later
+public/
+  staticwebapp.config.json  # SPA routing fallback for Azure SWA; also where auth-gated routes would go later — lives in public/ so Vite copies it into dist/
 src/
   data/
     questions.js    # the full QUIZ_BANK + shuffle/lookup helpers
