@@ -2,6 +2,8 @@
 // generator is included for parity with the live app, where that calculator is hidden
 // from the UI but not deleted — see App.jsx for the commented-out registration).
 
+import { shuffleArray } from "../data/questions";
+
 export function genWindProblem() {
   const tc = Math.floor(Math.random() * 360);
   const tas = 80 + Math.floor(Math.random() * 71);
