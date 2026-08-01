@@ -2,5 +2,8 @@
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": ["/assets/*", "/*.{png,jpg,jpeg,svg,ico,json,webmanifest}"]
-  }
+  },
+  "routes": [
+    { "route": "/api/*", "allowedRoles": ["authenticated"] }
+  ]
 }

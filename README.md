@@ -40,7 +40,7 @@ src/
     syllabus.js      # the 4-leg syllabus + section mapping
     glossary.js      # glossary terms
   lib/
-    storage.js        # the storage adapter (localStorage here; swap for a cloud API later)
+    storage.js        # the storage adapter — localStorage by default, /api/progress (see api/) once a user is signed in
     quizSession.js    # paused-quiz persistence + attempt-based scoring
     mockExam.js        # mock exam generation, persistence, scoring
     calculators.js     # pure-math problem generators for all 11 calculators (10 wired in + Instrument Reading, hidden)
@@ -63,22 +63,37 @@ This split follows the "M1/M2" recommendations from the app's own code review: d
 
 A minimal sign-in/sign-out affordance backed by [Azure Static Web Apps' built-in authentication](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization) is wired in (`lib/auth.js`, `lib/useAuth.js`, and the `AuthStatus` component, shown top-right of every screen).
 
-- **It's identity only.** Signing in shows a username and gives you a real, unique logged-in user — but progress still lives entirely in `localStorage`, unscoped to that user. Two people signed into the same browser would currently share the same local data. Wiring auth to actual per-user data (and offering to migrate someone's existing local progress into their account) is future work, not yet built.
-- **`/.auth/*` routes don't exist under plain `vite dev`.** They're provided by the SWA runtime itself. `fetchCurrentUser()` degrades gracefully in that case — `user` is just `null`, same as being signed out — so nothing breaks locally, but you also won't see login actually work until either:
+- **Signing in now scopes your data to your account** (see "Cloud sync" below) — progress follows you across devices once you're signed in. Signed-out use is unaffected: everything still works entirely offline in `localStorage`.
+- **`/.auth/*` routes don't exist under plain `vite dev`.** They're provided by the SWA runtime itself. `fetchCurrentUser()` degrades gracefully in that case — `user` is just `null`, same as being signed out — so nothing breaks locally, but you won't see login actually work, and `/api/*` won't be reachable either, until either:
   - you deploy to Azure Static Web Apps, or
-  - you run the [Static Web Apps CLI emulator](https://github.com/Azure/static-web-apps-cli) (`swa start`) locally instead of/alongside Vite dev.
+  - you run the [Static Web Apps CLI emulator](https://github.com/Azure/static-web-apps-cli) (`swa start`) locally instead of/alongside Vite dev — see "Cloud sync" below.
 - **Only the default identity providers work out of the box** (GitHub, Google, Twitter/X, Microsoft/Entra) — these are pre-registered by SWA on every tier including Free. Custom OIDC providers are a Standard-tier ($9/mo) feature.
-- **No routes are gated yet.** `staticwebapp.config.json` only has SPA routing fallback configured. To require sign-in for part of the app later, add an `allowedRoles` rule under `routes` there.
+- **`/api/*` is gated** via `staticwebapp.config.json`'s `allowedRoles: ["authenticated"]` rule — anonymous requests are rejected at SWA's edge before they ever reach the Functions app.
+
+## Cloud sync (cross-device progress)
+
+Once signed in, `storage.js` routes `get`/`set` to `GET`/`PUT /api/progress` (an Azure Function in `api/`) instead of `localStorage`, keyed by your SWA-issued `userId`. Signed-out use is entirely unchanged.
+
+**Local dev**, from the repo root:
+```bash
+npm install -g azure-functions-core-tools@4 --unsafe-perm true   # once, if not already installed
+npm run swa   # builds the app, then runs `swa start` (serves dist/ + api/ + a fake-login auth emulator together)
+```
+`api/local.settings.json` points the Function at [Azurite](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite) (`UseDevelopmentStorage=true`) — run `azurite` (or `docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite`) alongside `npm run swa` so the Function has somewhere to write. The `swa start` login screen is a **fake identity picker**, not real GitHub OAuth — it's enough to test the plumbing (does a blob get written/read, does the migration banner appear), but not to confirm real GitHub sign-in works end-to-end; that can only be verified on a real deploy.
+
+**Known limitations (v1, not oversights):**
+- Last-write-wins at the whole-progress-blob level — no merge if two devices save within moments of each other.
+- Signing in with a *different* identity provider (e.g. Google instead of GitHub) is a different account to SWA — same person, different `userId`, so progress won't follow across providers.
+- No real-time push between devices — reload to see updates made elsewhere.
+
+**Deploying this**: besides the existing GitHub Actions workflow (already updated to build and deploy `api/` alongside the app), you need to separately: (1) create an Azure Storage Account + a `progress` blob container, and (2) set `PROGRESS_STORAGE_CONNECTION_STRING` as an Application Setting on the Static Web App resource (Azure Portal → your app → Configuration, or `az staticwebapp appsettings set`). Neither step can be done from this repo/CI alone.
 
 ## What's NOT done yet (see the Azure roadmap)
 
 - **Custom hooks extraction (M1)**: `App.jsx`'s main component still holds all the state and effects directly rather than being broken into `usePersistentState`/`useQuizSession`/`useReadiness` hooks. The file split makes this the natural next step, but it wasn't done in this pass.
-- **PWA icons**: `public/manifest.json` has an empty `icons` array — add real icon PNGs (192×192 and 512×512 are the standard sizes) before this is installable as a home-screen app.
 - **Accessibility pass (H2)**: still pending — see the code review for specifics (aria attributes, label associations, SVG text alternatives, focus indicators).
-- **Deployment**: this only runs locally right now. Phase 1 of the Azure roadmap covers deploying to Azure Static Web Apps.
-- **Per-user data**: login (see above) is identity only — progress isn't yet scoped per signed-in user, and there's no "migrate my local progress into my account" flow. That's the real Phase 3 work.
 - **Tests**: none yet. The pure functions in `lib/calculators.js` and `lib/mockExam.js` are the best first targets — they're already used with real assertions when this was validated on the Claude side (Node execution, not a proper test framework), so porting those checks into Vitest would be quick.
 
 ## Data model note
 
-Progress, quiz attempts, paused quizzes, and mock exam state all persist as one JSON blob under a single `localStorage` key (see `lib/storage.js` for the exact key). Paused quizzes and the mock exam store question **references** (IDs + option order), not full question objects, to keep the payload small and always show current question wording even after edits to the bank.
+Progress, quiz attempts, paused quizzes, and mock exam state all persist as one JSON blob — under a single `localStorage` key when signed out (see `lib/storage.js` for the exact key), or as `progress/{userId}.json` in Blob Storage once signed in (see `api/src/functions/progress.js`). Paused quizzes and the mock exam store question **references** (IDs + option order), not full question objects, to keep the payload small and always show current question wording even after edits to the bank.

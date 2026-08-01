@@ -3,7 +3,7 @@ import { CheckCircle2, Circle, Clock, ChevronDown, ChevronRight, Target, BookOpe
 import { INK, MUTED, PAPER, PANEL, CONTOUR, MAGENTA, CHART_BLUE, OLIVE } from "./theme";
 import { QUIZ_BANK, shuffleArray, shuffleQuestionOptions } from "./data/questions";
 import { SYLLABUS, CATEGORY_TO_SECTION, OFFICIAL_SECTIONS, PASS_MARK } from "./data/syllabus";
-import { storageAdapter, STORAGE_KEY } from "./lib/storage";
+import { storageAdapter, STORAGE_KEY, configureRemoteUser, clearRemoteUser, AuthExpiredError } from "./lib/storage";
 import { serializePausedSession, rehydratePausedSession, pausedLength, latestAttempt, previousAttempt, attemptPct, computeSectionScores } from "./lib/quizSession";
 import { genMockExam, serializeExam, rehydrateExam, scoreExamBySection } from "./lib/mockExam";
 import { BottomTabBar, Stat, AuthStatus } from "./components/shared";
@@ -17,7 +17,7 @@ function PPLGroundSchoolSectionalInner() {
   // Identity only — see lib/auth.js. Resolves to null wherever the SWA auth runtime
   // isn't present (local `vite dev`, or before this is deployed to Azure), so this is
   // always safe to call regardless of environment or storage backend in use.
-  const { user: authUser } = useAuth();
+  const { user: authUser, checked: authChecked } = useAuth();
 
   const [progress, setProgress] = useState({});
   const [openLeg, setOpenLeg] = useState(null);
@@ -44,19 +44,54 @@ function PPLGroundSchoolSectionalInner() {
   const [examTick, setExamTick] = useState(0); // forces re-render every second so the countdown updates
   const [examLeaveTarget, setExamLeaveTarget] = useState(null); // "syllabus" | "quiz" | "calc" | null — pending tab-bar nav away from an in-progress exam
   const [saveStatus, setSaveStatus] = useState("idle"); // idle | saving | saved | error | unavailable
+  // Gates the persist effect alongside `loaded`. Stays false while a signed-in user with
+  // pre-existing local progress is deciding whether to import it, so an incidental state
+  // change (e.g. the active-quiz mirror effect below) can't silently push that data to
+  // their account before they've actually chosen to. See migrationOffer.
+  const [migrationResolved, setMigrationResolved] = useState(true);
+  // { payload } once a signed-in user is found to have local progress their (empty) remote
+  // account hasn't seen yet; null otherwise. Drives the import banner near the syllabus view.
+  const [migrationOffer, setMigrationOffer] = useState(null);
+  const configuredUserIdRef = useRef(undefined); // undefined = not yet configured this session
 
   useEffect(() => {
+    if (!authChecked) return; // wait for the one-time /.auth/me check to resolve
+    const targetUserId = authUser?.userId ?? null;
+
+    // A different identity than whatever this session already loaded data for (e.g. signed
+    // out and back in as someone else) — reload rather than hand-reset a dozen state slices.
+    if (configuredUserIdRef.current !== undefined && configuredUserIdRef.current !== targetUserId && loaded) {
+      window.location.reload();
+      return;
+    }
+    configuredUserIdRef.current = targetUserId;
+
+    if (targetUserId) configureRemoteUser(targetUserId);
+    else clearRemoteUser();
+
     (async () => {
       if (!storageAdapter.available) {
         console.error("No persistent storage backend is available in this environment.");
         setSaveStatus("unavailable");
+        setMigrationResolved(true);
         setLoaded(true);
         return;
       }
       try {
         const raw = await storageAdapter.get(STORAGE_KEY);
-        if (raw) {
-          const parsed = JSON.parse(raw);
+        const dismissedKey = targetUserId ? `migration-dismissed-${targetUserId}` : null;
+        const alreadyDismissed = dismissedKey ? window.localStorage.getItem(dismissedKey) === "1" : true;
+        let localRaw = null;
+        if (targetUserId && !raw && !alreadyDismissed) {
+          try {
+            localRaw = window.localStorage.getItem(STORAGE_KEY);
+          } catch {
+            localRaw = null;
+          }
+        }
+        const sourceRaw = localRaw || raw;
+        if (sourceRaw) {
+          const parsed = JSON.parse(sourceRaw);
           setProgress(parsed.progress || {});
           setExamDate(parsed.examDate || "");
           if (parsed.quizAttempts) {
@@ -93,13 +128,45 @@ function PPLGroundSchoolSectionalInner() {
             setMockExamHistory(parsed.mockExamHistory);
           }
         }
+        if (localRaw) {
+          // Non-trivial local progress found with nothing in this (empty) remote account yet.
+          setMigrationOffer({ dismissedKey });
+          setMigrationResolved(false);
+        } else {
+          setMigrationResolved(true);
+        }
       } catch (e) {
         // A corrupt saved blob shouldn't brick the app — start fresh and log it.
         console.error("Failed to parse saved state; starting fresh:", e?.message || e);
+        setMigrationResolved(true);
       }
       setLoaded(true);
     })();
-  }, []);
+    // `loaded` is read (to distinguish "already loaded once" from initial mount) but
+    // deliberately excluded here — it's set at the end of this same effect, and including
+    // it would re-fire this whole load a second time on every mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authChecked, authUser?.userId]);
+
+  const resolveMigration = (mode) => {
+    if (migrationOffer?.dismissedKey) {
+      try {
+        window.localStorage.setItem(migrationOffer.dismissedKey, "1");
+      } catch {
+        // best-effort; worst case the banner reappears next load
+      }
+    }
+    if (mode === "fresh") {
+      setProgress({});
+      setExamDate("");
+      setQuizAttempts({});
+      setPausedQuizzes({});
+      setMockExam(null);
+      setMockExamHistory([]);
+    }
+    setMigrationOffer(null);
+    setMigrationResolved(true);
+  };
 
   const persistTimer = useRef(null);
   const persistSeq = useRef(0);
@@ -121,6 +188,13 @@ function PPLGroundSchoolSectionalInner() {
       }
     } catch (e) {
       if (mySeq !== persistSeq.current) return;
+      if (e instanceof AuthExpiredError) {
+        // No amount of retrying fixes an expired session — surface the error immediately
+        // instead of burning the usual 3 backoff attempts on something that can't succeed.
+        console.error("Storage write failed: signed-in session expired.");
+        setSaveStatus("error");
+        return;
+      }
       console.error(`Storage error on attempt ${attempt} (backend: ${storageAdapter.backend}):`, e);
       if (attempt < 3) {
         setTimeout(() => writeToStorage(next, mySeq, attempt + 1), attempt * 1000);
@@ -154,9 +228,9 @@ function PPLGroundSchoolSectionalInner() {
   };
 
   useEffect(() => {
-    if (!loaded) return;
+    if (!loaded || !migrationResolved) return;
     persist({ progress, examDate, quizAttempts, pausedQuizzes, mockExam: serializeExam(mockExam), mockExamHistory });
-  }, [progress, examDate, quizAttempts, pausedQuizzes, mockExam, mockExamHistory, loaded, persist]);
+  }, [progress, examDate, quizAttempts, pausedQuizzes, mockExam, mockExamHistory, loaded, migrationResolved, persist]);
 
   const allTopics = SYLLABUS.flatMap((w) => w.topics);
   const doneCount = allTopics.filter((t) => progress[t.id]?.done).length;
@@ -574,6 +648,30 @@ function PPLGroundSchoolSectionalInner() {
             </div>
           );
         })()}
+
+        {view === "syllabus" && migrationOffer && (
+          <div style={{ marginBottom: 16 }}>
+            <div className="paper-panel" style={{ borderRadius: 4, padding: "12px 16px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+              <span style={{ fontSize: 12 }}>
+                We found existing progress on this device — import it into your account?
+              </span>
+              <button
+                onClick={() => resolveMigration("import")}
+                className="mono"
+                style={{ marginLeft: "auto", fontSize: 11, fontWeight: 700, color: OLIVE, background: "none", border: `1px solid ${OLIVE}`, borderRadius: 3, padding: "4px 10px", cursor: "pointer" }}
+              >
+                IMPORT INTO ACCOUNT
+              </button>
+              <button
+                onClick={() => resolveMigration("fresh")}
+                className="mono"
+                style={{ fontSize: 11, color: MUTED, background: "none", border: `1px solid ${CONTOUR}`, borderRadius: 3, padding: "4px 10px", cursor: "pointer" }}
+              >
+                START FRESH
+              </button>
+            </div>
+          </div>
+        )}
 
         {view === "syllabus" && Object.keys(pausedQuizzes).length > 0 && (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
