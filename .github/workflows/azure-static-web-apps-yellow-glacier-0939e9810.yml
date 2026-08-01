@@ -26,8 +26,6 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Install API dependencies
-        run: npm ci --prefix api
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -37,11 +35,9 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "dist" # Already-built static content (skip_app_build below means this is used as-is, not as a build source)
-          api_location: "api" # Functions app; deps installed above (skip_api_build below means this is used as-is)
-          output_location: "" # unused when skip_app_build is true
-          skip_app_build: true # We build ourselves above (ubuntu-latest, modern glibc) instead of Oryx, which errors on this rollup version
-          skip_api_build: true # API deps installed above too, same reason
+          app_location: "dist" # Already-built static content — no package.json here, so Oryx has nothing to build and won't hit the Rollup/glibc issue that building the repo root directly used to cause
+          api_location: "api" # Functions app — Oryx builds this normally (plain Node, no native deps, so no glibc issue); it also needs to run so it can detect and report the Function app's language, which deploy requires
+          output_location: "" # unused; app_location already points at the built output
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
