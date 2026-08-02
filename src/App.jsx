@@ -1034,6 +1034,15 @@ function PPLGroundSchoolSectionalInner() {
         {view === "exam" && mockExam && mockExam.submitted && (
           <MockExamResults exam={mockExam} onNewExam={newExam} />
         )}
+
+        <div style={{ marginTop: 32, paddingTop: 16, borderTop: `1px solid ${CONTOUR}55`, fontSize: 11, color: MUTED, lineHeight: 1.6 }}>
+          <div>
+            This is a study aid, not an official Transport Canada resource — always verify against current CARs, the TC AIM, and your aircraft's POH before relying on anything here.
+          </div>
+          <a href="mailto:jeff.mathers@hotmail.com?subject=License%20to%20Learn%20feedback" className="mono" style={{ color: MUTED, textDecoration: "underline", display: "inline-block", marginTop: 6 }}>
+            Found a mistake? Report it
+          </a>
+        </div>
       </div>
 
       <BottomTabBar
