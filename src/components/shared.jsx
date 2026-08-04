@@ -1,10 +1,84 @@
 // Small shared UI atoms used across the syllabus, quiz, and calculator screens.
 
 import { useState } from "react";
-import { Clock, ChevronDown, ChevronRight, Plane, Target, BookOpen } from "lucide-react";
-import { INK, MUTED, PAPER, PANEL, CONTOUR, MAGENTA, CHART_BLUE, OLIVE } from "../theme";
+import { Clock, ChevronDown, ChevronRight, Plane, Target, BookOpen, X } from "lucide-react";
+import {
+  INK, MUTED, PAPER, PANEL, CONTOUR, MAGENTA, CHART_BLUE, OLIVE,
+  ERROR, ERROR_BG, SUCCESS_BG, ON_ACCENT, SURFACE, CONTOUR_66, CHART_BLUE_66,
+} from "../theme";
 import { WB_ENVELOPE } from "../lib/calculators";
 import { loginUrl, logoutUrl } from "../lib/auth";
+
+// Scrim + centered card, used for any confirmation/settings-style overlay. A static
+// black scrim (not tied to the INK theme token) reads fine in either light or dark mode.
+export function Modal({ onClose, maxWidth = 360, borderColor, children }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100, padding: 20 }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="paper-panel"
+        style={{ borderRadius: 4, padding: 22, maxWidth, width: "100%", border: borderColor ? `1px solid ${borderColor}` : undefined }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// Built as a list of rows so future user-modifiable settings are just another row here,
+// not a redesign — "Appearance" is the only row today.
+export function SettingsModal({ mode, onModeChange, onClose }) {
+  const options = [
+    { key: "system", label: "System" },
+    { key: "light", label: "Light" },
+    { key: "dark", label: "Dark" },
+  ];
+  return (
+    <Modal onClose={onClose} maxWidth={340}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
+        <span className="chart-head" style={{ fontSize: 16, fontWeight: 700, color: INK }}>Settings</span>
+        <button
+          onClick={onClose}
+          aria-label="Close settings"
+          style={{ background: "none", border: "none", cursor: "pointer", color: MUTED, padding: 2, display: "flex" }}
+        >
+          <X size={18} />
+        </button>
+      </div>
+      <div>
+        <div className="mono" style={{ fontSize: 11, color: MUTED, marginBottom: 8, letterSpacing: 0.5 }}>APPEARANCE</div>
+        <div style={{ display: "flex", gap: 8 }}>
+          {options.map((opt) => {
+            const isActive = mode === opt.key;
+            return (
+              <button
+                key={opt.key}
+                onClick={() => onModeChange(opt.key)}
+                className="mono"
+                style={{
+                  flex: 1,
+                  fontSize: 12,
+                  fontWeight: isActive ? 700 : 500,
+                  padding: "8px 0",
+                  borderRadius: 4,
+                  cursor: "pointer",
+                  border: `1.5px solid ${isActive ? MAGENTA : CONTOUR}`,
+                  background: isActive ? MAGENTA : "none",
+                  color: isActive ? ON_ACCENT : MUTED,
+                }}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </Modal>
+  );
+}
 
 export function BottomTabBar({ active, onHome, onQuiz, onCalc, onExam }) {
   const tabs = [
@@ -23,7 +97,7 @@ export function BottomTabBar({ active, onHome, onQuiz, onCalc, onExam }) {
         width: "100%",
         maxWidth: 880,
         background: PANEL,
-        borderTop: `1px solid ${CONTOUR}66`,
+        borderTop: `1px solid ${CONTOUR_66}`,
         display: "flex",
         zIndex: 50,
         boxShadow: "0 -2px 10px rgba(44,35,19,0.08)",
@@ -91,8 +165,8 @@ export function NumberField({ label, value, onChange, unit, status }) {
   // status: undefined (not checked yet) | "correct" | "incorrect" — colors the field's
   // border/background the same way a wrong quiz answer is highlighted, so it's obvious
   // at a glance which specific input was off, not just that the overall answer was wrong.
-  const border = status === "incorrect" ? "#B5651D" : status === "correct" ? OLIVE : CONTOUR;
-  const bg = status === "incorrect" ? "#F5E3D6" : status === "correct" ? "#E4EAD3" : PAPER;
+  const border = status === "incorrect" ? ERROR : status === "correct" ? OLIVE : CONTOUR;
+  const bg = status === "incorrect" ? ERROR_BG : status === "correct" ? SUCCESS_BG : PAPER;
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
       <label style={{ fontSize: 11, color: MUTED }}>{label}</label>
@@ -114,15 +188,15 @@ export function SelectButtons({ options, value, onChange, checked, correctValue 
     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
       {options.map((opt) => {
         const isChosen = value === opt;
-        let border = CONTOUR, bg = "#fff", color = INK;
+        let border = CONTOUR, bg = SURFACE, color = INK;
         if (checked) {
           if (opt === correctValue) {
-            border = OLIVE; bg = "#E4EAD3"; color = OLIVE;
+            border = OLIVE; bg = SUCCESS_BG; color = OLIVE;
           } else if (isChosen) {
-            border = "#B5651D"; bg = "#F5E3D6"; color = "#B5651D";
+            border = ERROR; bg = ERROR_BG; color = ERROR;
           }
         } else if (isChosen) {
-          border = MAGENTA; bg = MAGENTA; color = "#F5F9F7";
+          border = MAGENTA; bg = MAGENTA; color = ON_ACCENT;
         }
         return (
           <button
@@ -141,7 +215,7 @@ export function SelectButtons({ options, value, onChange, checked, correctValue 
 
 export function ResultBanner({ correct, children }) {
   return (
-    <div style={{ background: correct ? "#E4EAD3" : "#F5E3D6", border: `1px solid ${correct ? OLIVE : "#B5651D"}`, borderRadius: 4, padding: "12px 16px", fontSize: 12, color: correct ? OLIVE : "#B5651D", marginTop: 12 }}>
+    <div style={{ background: correct ? SUCCESS_BG : ERROR_BG, border: `1px solid ${correct ? OLIVE : ERROR}`, borderRadius: 4, padding: "12px 16px", fontSize: 12, color: correct ? OLIVE : ERROR, marginTop: 12 }}>
       {children}
     </div>
   );
@@ -192,7 +266,7 @@ export function CGEnvelopeGraph({ cg, weight, showPoint, pointOk }) {
 
         {/* plotted point */}
         {showPoint && (
-          <circle cx={cgToX(cg)} cy={wToY(weight)} r="5" fill={pointOk ? OLIVE : "#B5651D"} stroke={INK} strokeWidth="1" />
+          <circle cx={cgToX(cg)} cy={wToY(weight)} r="5" fill={pointOk ? OLIVE : ERROR} stroke={INK} strokeWidth="1" />
         )}
       </svg>
       <div style={{ fontSize: 10, color: MUTED, marginTop: 2 }}>Practice-only envelope — shape and limits are illustrative, not real POH data.</div>
@@ -207,7 +281,7 @@ export function ApproachGuide({ steps }) {
       <button
         onClick={() => setOpen((o) => !o)}
         className="mono"
-        style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: CHART_BLUE, background: "none", border: `1px solid ${CHART_BLUE}66`, borderRadius: 3, padding: "6px 10px", cursor: "pointer" }}
+        style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: CHART_BLUE, background: "none", border: `1px solid ${CHART_BLUE_66}`, borderRadius: 3, padding: "6px 10px", cursor: "pointer" }}
       >
         {open ? <ChevronDown size={12} /> : <ChevronRight size={12} />} HOW TO APPROACH THIS
       </button>

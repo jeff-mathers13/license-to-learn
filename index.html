@@ -22,6 +22,73 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#036676" />
+
+    <style>
+      :root {
+        --ink: #22302B;
+        --muted: #5C6B63;
+        --paper: #E7EDEA;
+        --panel: #F3F7F5;
+        --contour: #93A39B;
+        --teal: #146B73;
+        --blue: #2E6E8E;
+        --olive: #3F7A4E;
+        --error: #B5651D;
+        --error-bg: #F5E3D6;
+        --success-bg: #E4EAD3;
+        --on-accent: #F5F9F7;
+        --surface: #ffffff;
+        --track-bg: rgba(0, 0, 0, 0.07);
+        --hover-bg: #EFE2B9;
+        --nav-dot-bg: #F3EDF0;
+        --section-track-bg: #E8E4D8;
+        --contour-33: rgba(147, 163, 155, 0.20);
+        --contour-55: rgba(147, 163, 155, 0.33);
+        --contour-66: rgba(147, 163, 155, 0.40);
+        --blue-66: rgba(46, 110, 142, 0.40);
+        --teal-66: rgba(20, 107, 115, 0.40);
+      }
+      [data-theme="dark"] {
+        --ink: #E9EDEA;
+        --muted: #9BAAA1;
+        --paper: #161C19;
+        --panel: #202823;
+        --contour: #5E766A;
+        --teal: #4FC3CC;
+        --blue: #6FB8E0;
+        --olive: #7BCB8C;
+        --error: #E8955C;
+        --error-bg: #3A2A1E;
+        --success-bg: #223A2A;
+        --on-accent: #12201C;
+        --surface: #26302A;
+        --track-bg: rgba(255, 255, 255, 0.08);
+        --hover-bg: #362E1C;
+        --nav-dot-bg: #2A2530;
+        --section-track-bg: #2E2B22;
+        --contour-33: rgba(94, 118, 106, 0.20);
+        --contour-55: rgba(94, 118, 106, 0.33);
+        --contour-66: rgba(94, 118, 106, 0.40);
+        --blue-66: rgba(111, 184, 224, 0.40);
+        --teal-66: rgba(79, 195, 204, 0.40);
+      }
+    </style>
+    <script>
+      // Runs before first paint so a saved/system "dark" preference never flashes light
+      // first. Mirrors the resolution logic in src/lib/themePreference.js — keep in sync.
+      (function () {
+        try {
+          var saved = localStorage.getItem('ppl-tracker-theme-v1');
+          var mode = saved === 'light' || saved === 'dark' ? saved : 'system';
+          var dark = mode === 'dark' || (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', '#161C19');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

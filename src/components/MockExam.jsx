@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { Clock, Flag, AlertTriangle } from "lucide-react";
-import { INK, MUTED, PAPER, CONTOUR, MAGENTA, CHART_BLUE, OLIVE } from "../theme";
+import {
+  INK, MUTED, PAPER, CONTOUR, MAGENTA, CHART_BLUE, OLIVE,
+  ERROR, ERROR_BG, SUCCESS_BG, ON_ACCENT, SURFACE, NAV_DOT_BG, SECTION_TRACK_BG,
+} from "../theme";
 import { PASS_MARK, OFFICIAL_SECTIONS } from "../data/syllabus";
 import { EXAM_LENGTH_OPTIONS, scoreExamBySection } from "../lib/mockExam";
 import { categoryFromId } from "../data/questions";
@@ -44,7 +47,7 @@ export function MockExamSetup({ history, onStart }) {
               return (
                 <div key={i} className="paper-panel" style={{ borderRadius: 4, padding: "10px 14px", display: "flex", justifyContent: "space-between", fontSize: 12 }}>
                   <span style={{ color: MUTED }}>{date} · {h.length}Q</span>
-                  <span className="mono" style={{ fontWeight: 700, color: passed ? OLIVE : "#B5651D" }}>{h.overallPct}% {passed ? "PASS" : "FAIL"}</span>
+                  <span className="mono" style={{ fontWeight: 700, color: passed ? OLIVE : ERROR }}>{h.overallPct}% {passed ? "PASS" : "FAIL"}</span>
                 </div>
               );
             })}
@@ -72,8 +75,8 @@ export function MockExamActive({ exam, questionIdx, setQuestionIdx, onAnswer, on
         <div className="mono" style={{ fontSize: 12, color: MUTED }}>
           Q {questionIdx + 1} / {exam.questions.length} · {answeredCount} answered
         </div>
-        <div className="mono" style={{ fontSize: 16, fontWeight: 700, color: lowTime ? "#B5651D" : INK, display: "flex", alignItems: "center", gap: 5 }}>
-          <Clock size={14} color={lowTime ? "#B5651D" : MUTED} />
+        <div className="mono" style={{ fontSize: 16, fontWeight: 700, color: lowTime ? ERROR : INK, display: "flex", alignItems: "center", gap: 5 }}>
+          <Clock size={14} color={lowTime ? ERROR : MUTED} />
           {String(mm).padStart(2, "0")}:{String(ss).padStart(2, "0")}
         </div>
       </div>
@@ -97,8 +100,8 @@ export function MockExamActive({ exam, questionIdx, setQuestionIdx, onAnswer, on
                 fontWeight: isCurrent ? 700 : 500,
                 borderRadius: 3,
                 cursor: "pointer",
-                border: isCurrent ? `2px solid ${MAGENTA}` : flagged ? `1px solid #B5651D` : `1px solid ${CONTOUR}`,
-                background: answered ? (flagged ? "#F5E3D6" : "#E4EAD3") : "#fff",
+                border: isCurrent ? `2px solid ${MAGENTA}` : flagged ? `1px solid ${ERROR}` : `1px solid ${CONTOUR}`,
+                background: answered ? (flagged ? ERROR_BG : SUCCESS_BG) : SURFACE,
                 color: INK,
                 flexShrink: 0,
               }}
@@ -117,7 +120,7 @@ export function MockExamActive({ exam, questionIdx, setQuestionIdx, onAnswer, on
             title="Flag for review"
             style={{ background: "none", border: "none", cursor: "pointer", padding: 4, flexShrink: 0 }}
           >
-            <Flag size={20} color={isFlagged ? "#B5651D" : CONTOUR} fill={isFlagged ? "#B5651D" : "none"} />
+            <Flag size={20} color={isFlagged ? ERROR : CONTOUR} fill={isFlagged ? ERROR : "none"} />
           </button>
         </div>
 
@@ -133,7 +136,7 @@ export function MockExamActive({ exam, questionIdx, setQuestionIdx, onAnswer, on
                   padding: "12px 16px",
                   borderRadius: 4,
                   border: `1px solid ${isChosen ? MAGENTA : CONTOUR}`,
-                  background: isChosen ? "#F3EDF0" : PAPER,
+                  background: isChosen ? NAV_DOT_BG : PAPER,
                   color: INK,
                   fontSize: 13,
                   cursor: "pointer",
@@ -170,14 +173,14 @@ export function MockExamActive({ exam, questionIdx, setQuestionIdx, onAnswer, on
           <button
             onClick={() => setSubmitConfirm(true)}
             className="chart-head"
-            style={{ width: "100%", background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "14px 18px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}
+            style={{ width: "100%", background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "14px 18px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}
           >
             SUBMIT EXAM
           </button>
         ) : (
-          <div className="paper-panel" style={{ borderRadius: 4, padding: 18, border: "1px solid #B5651D" }}>
+          <div className="paper-panel" style={{ borderRadius: 4, padding: 18, border: `1px solid ${ERROR}` }}>
             <div style={{ display: "flex", gap: 10, marginBottom: 12 }}>
-              <AlertTriangle size={18} color="#B5651D" style={{ flexShrink: 0, marginTop: 1 }} />
+              <AlertTriangle size={18} color={ERROR} style={{ flexShrink: 0, marginTop: 1 }} />
               <div style={{ fontSize: 13, color: INK, lineHeight: 1.5 }}>
                 {answeredCount} of {exam.questions.length} answered
                 {exam.flagged.length > 0 && `, ${exam.flagged.length} flagged for review`}. Submitting ends the exam — this can't be undone.
@@ -187,7 +190,7 @@ export function MockExamActive({ exam, questionIdx, setQuestionIdx, onAnswer, on
               <button
                 onClick={onSubmit}
                 className="mono"
-                style={{ flex: 1, fontSize: 12, fontWeight: 700, color: "#F5F9F7", background: "#B5651D", border: "none", borderRadius: 4, padding: "10px 16px", cursor: "pointer" }}
+                style={{ flex: 1, fontSize: 12, fontWeight: 700, color: ON_ACCENT, background: ERROR, border: "none", borderRadius: 4, padding: "10px 16px", cursor: "pointer" }}
               >
                 CONFIRM SUBMIT
               </button>
@@ -224,16 +227,16 @@ export function MockExamResults({ exam, onNewExam }) {
 
       <div
         className="paper-panel"
-        style={{ borderRadius: 4, padding: 24, marginBottom: 16, textAlign: "center", border: `2px solid ${fullyPassed ? OLIVE : "#B5651D"}` }}
+        style={{ borderRadius: 4, padding: 24, marginBottom: 16, textAlign: "center", border: `2px solid ${fullyPassed ? OLIVE : ERROR}` }}
       >
         <div className="mono" style={{ fontSize: 11, color: MUTED, letterSpacing: 0.5, marginBottom: 6 }}>OVERALL SCORE</div>
-        <div className="chart-head" style={{ fontSize: 40, fontWeight: 700, color: fullyPassed ? OLIVE : "#B5651D" }}>{overallPct}%</div>
-        <div className="mono" style={{ fontSize: 13, fontWeight: 700, color: fullyPassed ? OLIVE : "#B5651D", marginTop: 4 }}>
+        <div className="chart-head" style={{ fontSize: 40, fontWeight: 700, color: fullyPassed ? OLIVE : ERROR }}>{overallPct}%</div>
+        <div className="mono" style={{ fontSize: 13, fontWeight: 700, color: fullyPassed ? OLIVE : ERROR, marginTop: 4 }}>
           {fullyPassed ? "PASS" : "FAIL"}
         </div>
         <div style={{ fontSize: 11, color: MUTED, marginTop: 8 }}>{totals.correct} / {totals.total} correct</div>
         {overallPass && !allSectionsPass && (
-          <div style={{ fontSize: 11, color: "#B5651D", marginTop: 8 }}>Overall met 60%, but at least one section fell short — the real exam requires 60% in every section.</div>
+          <div style={{ fontSize: 11, color: ERROR, marginTop: 8 }}>Overall met 60%, but at least one section fell short — the real exam requires 60% in every section.</div>
         )}
       </div>
 
@@ -246,10 +249,10 @@ export function MockExamResults({ exam, onNewExam }) {
             <div key={section} className="paper-panel" style={{ borderRadius: 4, padding: "12px 16px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
                 <span style={{ fontSize: 13 }}>{section}</span>
-                <span className="mono" style={{ fontSize: 12, fontWeight: 700, color: pass ? OLIVE : "#B5651D" }}>{pct}% ({s.correct}/{s.total})</span>
+                <span className="mono" style={{ fontSize: 12, fontWeight: 700, color: pass ? OLIVE : ERROR }}>{pct}% ({s.correct}/{s.total})</span>
               </div>
-              <div style={{ height: 6, background: "#E8E4D8", borderRadius: 3, overflow: "hidden" }}>
-                <div style={{ width: `${pct}%`, height: "100%", background: pass ? OLIVE : "#B5651D", transition: "width 0.3s ease" }} />
+              <div style={{ height: 6, background: SECTION_TRACK_BG, borderRadius: 3, overflow: "hidden" }}>
+                <div style={{ width: `${pct}%`, height: "100%", background: pass ? OLIVE : ERROR, transition: "width 0.3s ease" }} />
               </div>
             </div>
           );
@@ -267,7 +270,7 @@ export function MockExamResults({ exam, onNewExam }) {
         <button
           onClick={onNewExam}
           className="chart-head"
-          style={{ flex: 1, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 16px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+          style={{ flex: 1, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 16px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
         >
           NEW EXAM
         </button>
@@ -280,13 +283,13 @@ export function MockExamResults({ exam, onNewExam }) {
             const answered = chosen !== undefined;
             const correct = answered && chosen === q.correct;
             return (
-              <div key={q.id} className="paper-panel" style={{ borderRadius: 4, padding: "14px 16px", borderLeft: `4px solid ${correct ? OLIVE : "#B5651D"}` }}>
+              <div key={q.id} className="paper-panel" style={{ borderRadius: 4, padding: "14px 16px", borderLeft: `4px solid ${correct ? OLIVE : ERROR}` }}>
                 <div className="mono" style={{ fontSize: 10, color: MUTED, marginBottom: 6 }}>
                   Q{i + 1} · {categoryFromId(q.id)} {exam.flagged.includes(q.id) && "· FLAGGED"}
                 </div>
                 <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>{q.q}</div>
                 <div style={{ fontSize: 12, color: INK, marginBottom: 4 }}>
-                  Your answer: <strong style={{ color: answered ? (correct ? OLIVE : "#B5651D") : MUTED }}>{answered ? q.options[chosen] : "Not answered"}</strong>
+                  Your answer: <strong style={{ color: answered ? (correct ? OLIVE : ERROR) : MUTED }}>{answered ? q.options[chosen] : "Not answered"}</strong>
                 </div>
                 {!correct && (
                   <div style={{ fontSize: 12, color: OLIVE, marginBottom: 6 }}>Correct answer: <strong>{q.options[q.correct]}</strong></div>

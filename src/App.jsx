@@ -1,23 +1,47 @@
 import { useState, useEffect, useCallback, useRef, Component } from "react";
-import { CheckCircle2, Circle, Clock, ChevronDown, ChevronRight, Target, BookOpen, RotateCcw, AlertTriangle } from "lucide-react";
-import { INK, MUTED, PAPER, PANEL, CONTOUR, MAGENTA, CHART_BLUE, OLIVE } from "./theme";
+import { CheckCircle2, Circle, Clock, ChevronDown, ChevronRight, Target, BookOpen, RotateCcw, AlertTriangle, Settings } from "lucide-react";
+import {
+  INK, MUTED, PAPER, PANEL, CONTOUR, MAGENTA, CHART_BLUE, OLIVE,
+  ERROR, ERROR_BG, SUCCESS_BG, ON_ACCENT, SURFACE, TRACK_BG, HOVER_BG, CONTOUR_33, CONTOUR_55, CHART_BLUE_66, MAGENTA_66,
+} from "./theme";
 import { QUIZ_BANK, shuffleArray, shuffleQuestionOptions } from "./data/questions";
 import { SYLLABUS, CATEGORY_TO_SECTION, OFFICIAL_SECTIONS, PASS_MARK } from "./data/syllabus";
 import { storageAdapter, STORAGE_KEY, configureRemoteUser, clearRemoteUser, AuthExpiredError } from "./lib/storage";
 import { serializePausedSession, rehydratePausedSession, pausedLength, latestAttempt, previousAttempt, attemptPct, computeSectionScores } from "./lib/quizSession";
 import { genMockExam, serializeExam, rehydrateExam, scoreExamBySection } from "./lib/mockExam";
-import { BottomTabBar, Stat, AuthStatus } from "./components/shared";
+import { BottomTabBar, Stat, AuthStatus, Modal, SettingsModal } from "./components/shared";
 import { QuizCard } from "./components/QuizCard";
 import { WindTriangleCalc, DensityAltitudeCalc, WeightBalanceCalc, PerformanceChartCalc, FuelPlanningCalc, WeatherChartCalc, MetarTafCalc, CrosswindCalc, TasCalc, CGShiftCalc, InstrumentCalc } from "./components/Calculators";
 import { GlossaryPage } from "./components/Glossary";
 import { MockExamSetup, MockExamActive, MockExamResults } from "./components/MockExam";
 import { useAuth } from "./lib/useAuth";
+import { getStoredPreference, setStoredPreference, resolveTheme, applyResolvedTheme } from "./lib/themePreference";
 
 function PPLGroundSchoolSectionalInner() {
   // Identity only — see lib/auth.js. Resolves to null wherever the SWA auth runtime
   // isn't present (local `vite dev`, or before this is deployed to Azure), so this is
   // always safe to call regardless of environment or storage backend in use.
   const { user: authUser, checked: authChecked } = useAuth();
+
+  // Device display preference — "light" | "dark" | "system". Deliberately not part of
+  // the cloud-synced progress payload; see lib/themePreference.js.
+  const [themeMode, setThemeMode] = useState(getStoredPreference);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
+  useEffect(() => {
+    applyResolvedTheme(resolveTheme(themeMode));
+    if (themeMode !== "system") return;
+    // Live-follow the OS theme while "System" is selected, without needing a reload.
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = () => applyResolvedTheme(resolveTheme("system"));
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [themeMode]);
+
+  const setTheme = (mode) => {
+    setThemeMode(mode);
+    setStoredPreference(mode);
+  };
 
   const [progress, setProgress] = useState({});
   const [openLeg, setOpenLeg] = useState(null);
@@ -501,9 +525,10 @@ function PPLGroundSchoolSectionalInner() {
         @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap');
         .chart-head { font-family: 'Bitter', serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .topic-row:hover { background: #EFE2B9; }
+        .topic-row:hover { background: ${HOVER_BG}; }
         input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; }
-        .paper-panel { background: ${PANEL}; border: 1px solid ${CONTOUR}55; }
+        [data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); }
+        .paper-panel { background: ${PANEL}; border: 1px solid ${CONTOUR_55}; }
       `}</style>
 
       <div style={{ maxWidth: 880, margin: "0 auto", padding: "0 20px 100px" }}>
@@ -515,20 +540,31 @@ function PPLGroundSchoolSectionalInner() {
             </span>
           )}
           <AuthStatus user={authUser} />
+          <button
+            onClick={() => setSettingsOpen(true)}
+            aria-label="Settings"
+            style={{ background: "none", border: "none", cursor: "pointer", color: MUTED, padding: 2, display: "flex" }}
+          >
+            <Settings size={16} />
+          </button>
         </div>
 
+        {settingsOpen && (
+          <SettingsModal mode={themeMode} onModeChange={setTheme} onClose={() => setSettingsOpen(false)} />
+        )}
+
         {saveStatus === "unavailable" && (
-          <div style={{ background: "#F5E3D6", border: "1px solid #B5651D", borderRadius: 4, padding: "12px 16px", margin: "16px 0", fontSize: 12, color: "#B5651D" }}>
+          <div style={{ background: ERROR_BG, border: `1px solid ${ERROR}`, borderRadius: 4, padding: "12px 16px", margin: "16px 0", fontSize: 12, color: ERROR }}>
             Persistent storage isn't available in this environment, so progress won't be saved between sessions. This can happen in private/incognito browsing or when the browser blocks site storage — try a regular browser window.
           </div>
         )}
         {saveStatus === "error" && (
-          <div style={{ background: "#F5E3D6", border: "1px solid #B5651D", borderRadius: 4, padding: "12px 16px", margin: "16px 0", fontSize: 12, color: "#B5651D", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+          <div style={{ background: ERROR_BG, border: `1px solid ${ERROR}`, borderRadius: 4, padding: "12px 16px", margin: "16px 0", fontSize: 12, color: ERROR, display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
             <span>Unable to log this leg — your last change may not have made it to the flight log. Check the browser console for details.</span>
             <button
               onClick={retryNow}
               className="mono"
-              style={{ marginLeft: "auto", fontSize: 11, fontWeight: 700, color: "#B5651D", background: "none", border: "1px solid #B5651D", borderRadius: 3, padding: "5px 10px", cursor: "pointer" }}
+              style={{ marginLeft: "auto", fontSize: 11, fontWeight: 700, color: ERROR, background: "none", border: `1px solid ${ERROR}`, borderRadius: 3, padding: "5px 10px", cursor: "pointer" }}
             >
               RETRY NOW
             </button>
@@ -555,7 +591,7 @@ function PPLGroundSchoolSectionalInner() {
             {overallQuizPct !== null && (
               <span
                 className="mono"
-                style={{ marginLeft: "auto", fontSize: 12, fontWeight: 700, color: overallQuizPct >= PASS_MARK ? OLIVE : "#B5651D" }}
+                style={{ marginLeft: "auto", fontSize: 12, fontWeight: 700, color: overallQuizPct >= PASS_MARK ? OLIVE : ERROR }}
               >
                 OVERALL {overallQuizPct}%
               </span>
@@ -567,7 +603,7 @@ function PPLGroundSchoolSectionalInner() {
               const pct = s.total ? Math.round((s.correct / s.total) * 100) : null;
               const attempted = s.total > 0;
               const passed = attempted && pct >= PASS_MARK;
-              const barColor = !attempted ? CONTOUR : passed ? OLIVE : "#B5651D";
+              const barColor = !attempted ? CONTOUR : passed ? OLIVE : ERROR;
               return (
                 <div key={section}>
                   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
@@ -576,7 +612,7 @@ function PPLGroundSchoolSectionalInner() {
                       {attempted ? `${pct}% (${s.correct}/${s.total})` : "not attempted"}
                     </span>
                   </div>
-                  <div style={{ position: "relative", height: 8, background: "#00000012", borderRadius: 4, overflow: "hidden" }}>
+                  <div style={{ position: "relative", height: 8, background: TRACK_BG, borderRadius: 4, overflow: "hidden" }}>
                     <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${attempted ? pct : 0}%`, background: barColor, transition: "width 0.3s ease" }} />
                     <div style={{ position: "absolute", left: `${PASS_MARK}%`, top: -2, bottom: -2, width: 2, background: INK }} title="60% pass mark" />
                   </div>
@@ -712,20 +748,20 @@ function PPLGroundSchoolSectionalInner() {
                     style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "14px 18px", background: "none", border: "none", cursor: "pointer", color: INK, textAlign: "left" }}
                   >
                     {isOpen ? <ChevronDown size={16} color={MUTED} /> : <ChevronRight size={16} color={MUTED} />}
-                    <span className="mono" style={{ fontSize: 11, color: MAGENTA, border: `1px solid ${MAGENTA}66`, borderRadius: 3, padding: "2px 6px" }}>LEG {leg.leg}</span>
+                    <span className="mono" style={{ fontSize: 11, color: MAGENTA, border: `1px solid ${MAGENTA_66}`, borderRadius: 3, padding: "2px 6px" }}>LEG {leg.leg}</span>
                     <span className="chart-head" style={{ fontWeight: 700, fontSize: 15 }}>{leg.title}</span>
                     <span style={{ marginLeft: "auto", fontSize: 12, color: MUTED }} className="mono">{legDone}/{leg.topics.length}</span>
                   </button>
                   {isOpen && (
-                    <div style={{ borderTop: `1px solid ${CONTOUR}55` }}>
+                    <div style={{ borderTop: `1px solid ${CONTOUR_55}` }}>
                       {leg.topics.map((t) => {
                         const readiness = getTopicReadiness(t);
                         const badgeColor =
-                          readiness.status === "pass" ? OLIVE : readiness.status === "fail" ? "#B5651D" : CONTOUR;
+                          readiness.status === "pass" ? OLIVE : readiness.status === "fail" ? ERROR : CONTOUR;
                         const badgeText =
                           readiness.status === "n/a" ? "review" : readiness.status === "no-data" ? "no quiz yet" : `${readiness.pct}%`;
                         return (
-                          <div key={t.id} style={{ borderBottom: `1px solid ${CONTOUR}33` }}>
+                          <div key={t.id} style={{ borderBottom: `1px solid ${CONTOUR_33}` }}>
                             <div className="topic-row" style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 18px" }}>
                               <button onClick={() => toggleDone(t.id)} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex" }}>
                                 {progress[t.id]?.done ? <CheckCircle2 size={18} color={OLIVE} /> : <Circle size={18} color={CONTOUR} />}
@@ -738,7 +774,7 @@ function PPLGroundSchoolSectionalInner() {
                                 <button
                                   onClick={() => toggleReading(t.id)}
                                   title="Show recommended reading"
-                                  style={{ background: "none", border: `1px solid ${CHART_BLUE}66`, borderRadius: 3, padding: "4px 6px", cursor: "pointer", display: "flex", color: CHART_BLUE, flexShrink: 0 }}
+                                  style={{ background: "none", border: `1px solid ${CHART_BLUE_66}`, borderRadius: 3, padding: "4px 6px", cursor: "pointer", display: "flex", color: CHART_BLUE, flexShrink: 0 }}
                                 >
                                   <BookOpen size={13} />
                                 </button>
@@ -794,7 +830,7 @@ function PPLGroundSchoolSectionalInner() {
                 type="date"
                 value={examDate}
                 onChange={(e) => setExamDate(e.target.value)}
-                style={{ background: "#fff", border: `1px solid ${CONTOUR}`, borderRadius: 4, color: INK, padding: "5px 9px", fontSize: 12 }}
+                style={{ background: SURFACE, border: `1px solid ${CONTOUR}`, borderRadius: 4, color: INK, padding: "5px 9px", fontSize: 12 }}
               />
               {daysToExam !== null && <span className="mono" style={{ fontSize: 12, color: MAGENTA, fontWeight: 700 }}>{daysToExam}D OUT</span>}
             </div>
@@ -809,7 +845,7 @@ function PPLGroundSchoolSectionalInner() {
               <button
                 onClick={() => setView("glossary")}
                 className="mono"
-                style={{ background: "none", border: `1px solid ${CHART_BLUE}66`, borderRadius: 3, padding: "5px 10px", color: CHART_BLUE, fontSize: 11, cursor: "pointer", flexShrink: 0 }}
+                style={{ background: "none", border: `1px solid ${CHART_BLUE_66}`, borderRadius: 3, padding: "5px 10px", color: CHART_BLUE, fontSize: 11, cursor: "pointer", flexShrink: 0 }}
               >
                 GLOSSARY
               </button>
@@ -853,7 +889,7 @@ function PPLGroundSchoolSectionalInner() {
                     </div>
                   </div>
                   <div style={{ textAlign: "right", flexShrink: 0 }}>
-                    <span className="mono" style={{ fontSize: 12, color: pct === null ? MUTED : passed ? OLIVE : "#B5651D", fontWeight: 700 }}>
+                    <span className="mono" style={{ fontSize: 12, color: pct === null ? MUTED : passed ? OLIVE : ERROR, fontWeight: 700 }}>
                       {isPaused
                         ? `Q${pausedQuizzes[cat].index + 1}/${pausedLength(pausedQuizzes[cat])}`
                         : pct === null
@@ -861,7 +897,7 @@ function PPLGroundSchoolSectionalInner() {
                         : `${pct}% · ${latest.correct}/${latest.total}`}
                     </span>
                     {!isPaused && delta !== null && delta !== 0 && (
-                      <div className="mono" style={{ fontSize: 10, color: delta > 0 ? OLIVE : "#B5651D", marginTop: 2 }}>
+                      <div className="mono" style={{ fontSize: 10, color: delta > 0 ? OLIVE : ERROR, marginTop: 2 }}>
                         {delta > 0 ? "▲" : "▼"} {Math.abs(delta)} PTS
                       </div>
                     )}
@@ -892,7 +928,7 @@ function PPLGroundSchoolSectionalInner() {
           <div className="paper-panel" style={{ borderRadius: 4, padding: 22 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
               <span className="chart-head" style={{ fontSize: 18, fontWeight: 700 }}>{quizCategory?.toUpperCase()} — RESULTS</span>
-              <span className="mono" style={{ fontSize: 13, fontWeight: 700, color: missedQuestions.length === 0 ? OLIVE : "#B5651D" }}>
+              <span className="mono" style={{ fontSize: 13, fontWeight: 700, color: missedQuestions.length === 0 ? OLIVE : ERROR }}>
                 {sessionTotal - missedQuestions.length}/{sessionTotal} correct
               </span>
             </div>
@@ -921,10 +957,10 @@ function PPLGroundSchoolSectionalInner() {
                 <div style={{ fontSize: 12, color: MUTED, marginBottom: 14 }}>Review what you missed before moving on:</div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   {missedQuestions.map((mq, i) => (
-                    <div key={i} style={{ borderTop: `1px solid ${CONTOUR}33`, paddingTop: 12 }}>
+                    <div key={i} style={{ borderTop: `1px solid ${CONTOUR_33}`, paddingTop: 12 }}>
                       <div style={{ fontSize: 13, marginBottom: 8 }}>{mq.q}</div>
                       <div style={{ fontSize: 12, marginBottom: 4 }}>
-                        <span style={{ color: "#B5651D" }}>Your answer: </span>
+                        <span style={{ color: ERROR }}>Your answer: </span>
                         <span>{mq.options[mq.chosenIndex]}</span>
                       </div>
                       <div style={{ fontSize: 12, marginBottom: 8 }}>
@@ -942,7 +978,7 @@ function PPLGroundSchoolSectionalInner() {
             <button
               onClick={finishReview}
               className="chart-head"
-              style={{ marginTop: 18, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+              style={{ marginTop: 18, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
             >
               DONE
             </button>
@@ -956,7 +992,7 @@ function PPLGroundSchoolSectionalInner() {
               <button
                 onClick={() => setView("glossary")}
                 className="mono"
-                style={{ marginLeft: "auto", background: "none", border: `1px solid ${CHART_BLUE}66`, borderRadius: 3, padding: "5px 10px", color: CHART_BLUE, fontSize: 11, cursor: "pointer", flexShrink: 0, marginBottom: 4 }}
+                style={{ marginLeft: "auto", background: "none", border: `1px solid ${CHART_BLUE_66}`, borderRadius: 3, padding: "5px 10px", color: CHART_BLUE, fontSize: 11, cursor: "pointer", flexShrink: 0, marginBottom: 4 }}
               >
                 GLOSSARY
               </button>
@@ -1035,7 +1071,7 @@ function PPLGroundSchoolSectionalInner() {
           <MockExamResults exam={mockExam} onNewExam={newExam} />
         )}
 
-        <div style={{ marginTop: 32, paddingTop: 16, borderTop: `1px solid ${CONTOUR}55`, fontSize: 11, color: MUTED, lineHeight: 1.6 }}>
+        <div style={{ marginTop: 32, paddingTop: 16, borderTop: `1px solid ${CONTOUR_55}`, fontSize: 11, color: MUTED, lineHeight: 1.6 }}>
           <div>
             This is a study aid, not an official Transport Canada resource — always verify against current CARs, the TC AIM, and your aircraft's POH before relying on anything here.
           </div>
@@ -1058,32 +1094,30 @@ function PPLGroundSchoolSectionalInner() {
         onExam={() => setView("exam")}
       />
       {examLeaveTarget && (
-        <div style={{ position: "fixed", inset: 0, background: "rgba(34,48,43,0.55)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100, padding: 20 }}>
-          <div className="paper-panel" style={{ borderRadius: 4, padding: 22, maxWidth: 360, border: "1px solid #B5651D" }}>
-            <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
-              <AlertTriangle size={20} color="#B5651D" style={{ flexShrink: 0, marginTop: 1 }} />
-              <div style={{ fontSize: 13, color: INK, lineHeight: 1.55 }}>
-                Your exam is still in progress and the timer keeps running even after you leave. Your answers are saved, but time won't pause.
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: 10 }}>
-              <button
-                onClick={confirmExamLeave}
-                className="mono"
-                style={{ flex: 1, fontSize: 12, fontWeight: 700, color: "#F5F9F7", background: "#B5651D", border: "none", borderRadius: 4, padding: "10px 16px", cursor: "pointer" }}
-              >
-                LEAVE ANYWAY
-              </button>
-              <button
-                onClick={() => setExamLeaveTarget(null)}
-                className="mono"
-                style={{ flex: 1, fontSize: 12, color: MUTED, background: "none", border: `1px solid ${CONTOUR}`, borderRadius: 4, padding: "10px 16px", cursor: "pointer" }}
-              >
-                STAY
-              </button>
+        <Modal onClose={() => setExamLeaveTarget(null)} borderColor={ERROR}>
+          <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
+            <AlertTriangle size={20} color={ERROR} style={{ flexShrink: 0, marginTop: 1 }} />
+            <div style={{ fontSize: 13, color: INK, lineHeight: 1.55 }}>
+              Your exam is still in progress and the timer keeps running even after you leave. Your answers are saved, but time won't pause.
             </div>
           </div>
-        </div>
+          <div style={{ display: "flex", gap: 10 }}>
+            <button
+              onClick={confirmExamLeave}
+              className="mono"
+              style={{ flex: 1, fontSize: 12, fontWeight: 700, color: ON_ACCENT, background: ERROR, border: "none", borderRadius: 4, padding: "10px 16px", cursor: "pointer" }}
+            >
+              LEAVE ANYWAY
+            </button>
+            <button
+              onClick={() => setExamLeaveTarget(null)}
+              className="mono"
+              style={{ flex: 1, fontSize: 12, color: MUTED, background: "none", border: `1px solid ${CONTOUR}`, borderRadius: 4, padding: "10px 16px", cursor: "pointer" }}
+            >
+              STAY
+            </button>
+          </div>
+        </Modal>
       )}
     </div>
   );
@@ -1150,7 +1184,7 @@ class ErrorBoundary extends Component {
             </div>
             <button
               onClick={() => window.location.reload()}
-              style={{ background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 20px", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "'JetBrains Mono', monospace" }}
+              style={{ background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 20px", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "'JetBrains Mono', monospace" }}
             >
               RELOAD
             </button>

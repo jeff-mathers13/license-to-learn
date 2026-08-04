@@ -1,7 +1,7 @@
 // Searchable glossary — 99 terms covering everything the quiz bank and calculators use.
 
 import { useState } from "react";
-import { INK, MUTED, CONTOUR, CHART_BLUE } from "../theme";
+import { INK, MUTED, CONTOUR, CHART_BLUE, SURFACE } from "../theme";
 import { GLOSSARY_TERMS } from "../data/glossary";
 
 export function GlossaryPage() {
@@ -21,7 +21,7 @@ export function GlossaryPage() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search terms…"
-        style={{ width: "100%", background: "#fff", border: `1px solid ${CONTOUR}`, borderRadius: 4, padding: "9px 12px", fontSize: 13, color: INK, marginBottom: 16, boxSizing: "border-box" }}
+        style={{ width: "100%", background: SURFACE, border: `1px solid ${CONTOUR}`, borderRadius: 4, padding: "9px 12px", fontSize: 13, color: INK, marginBottom: 16, boxSizing: "border-box" }}
       />
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {filtered.length === 0 ? (

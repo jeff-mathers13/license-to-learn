@@ -1,7 +1,7 @@
 // The active quiz-question screen, including the inline Explain toggle.
 
 import { useState } from "react";
-import { INK, MUTED, PAPER, CONTOUR, MAGENTA, OLIVE } from "../theme";
+import { INK, MUTED, PAPER, CONTOUR, MAGENTA, OLIVE, ERROR, ERROR_BG, SUCCESS_BG, ON_ACCENT } from "../theme";
 
 export function QuizCard({ category, question, index, total, answer, onSubmit, onNext, onSaveExit, onFinishNow, hasMissed }) {
   const [showExplanation, setShowExplanation] = useState(false);
@@ -20,8 +20,8 @@ export function QuizCard({ category, question, index, total, answer, onSubmit, o
           const isChosen = i === answer;
           let bg = PAPER, border = CONTOUR, color = INK;
           if (answer !== null) {
-            if (isCorrect) { bg = "#E4EAD3"; border = OLIVE; color = OLIVE; }
-            else if (isChosen) { bg = "#F5E3D6"; border = "#B5651D"; color = "#B5651D"; }
+            if (isCorrect) { bg = SUCCESS_BG; border = OLIVE; color = OLIVE; }
+            else if (isChosen) { bg = ERROR_BG; border = ERROR; color = ERROR; }
           }
           return (
             <button
@@ -44,9 +44,9 @@ export function QuizCard({ category, question, index, total, answer, onSubmit, o
             style={{
               fontSize: 11,
               fontWeight: 700,
-              color: isCorrectAnswer ? OLIVE : "#B5651D",
+              color: isCorrectAnswer ? OLIVE : ERROR,
               background: "none",
-              border: `1px solid ${isCorrectAnswer ? OLIVE : "#B5651D"}`,
+              border: `1px solid ${isCorrectAnswer ? OLIVE : ERROR}`,
               borderRadius: 3,
               padding: "6px 12px",
               cursor: "pointer",
@@ -58,8 +58,8 @@ export function QuizCard({ category, question, index, total, answer, onSubmit, o
             <div
               style={{
                 marginTop: 10,
-                background: isCorrectAnswer ? "#E4EAD3" : "#F5E3D6",
-                border: `1px solid ${isCorrectAnswer ? OLIVE : "#B5651D"}`,
+                background: isCorrectAnswer ? SUCCESS_BG : ERROR_BG,
+                border: `1px solid ${isCorrectAnswer ? OLIVE : ERROR}`,
                 borderRadius: 4,
                 padding: "12px 16px",
                 fontSize: 13,
@@ -78,7 +78,7 @@ export function QuizCard({ category, question, index, total, answer, onSubmit, o
           <button
             onClick={onNext}
             className="chart-head"
-            style={{ background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+            style={{ background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
           >
             {index + 1 < total ? "NEXT QUESTION →" : "FINISH"}
           </button>

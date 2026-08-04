@@ -6,7 +6,7 @@
 // commented-out registration in App.jsx to re-enable it.
 
 import { useState } from "react";
-import { INK, MUTED, PAPER, CONTOUR, MAGENTA, CHART_BLUE, OLIVE } from "../theme";
+import { INK, MUTED, PAPER, CONTOUR, MAGENTA, CHART_BLUE, OLIVE, ON_ACCENT, CONTOUR_33, CONTOUR_66, CHART_BLUE_66 } from "../theme";
 import { CalcHeader, NumberField, SelectButtons, ResultBanner, ApproachGuide, CGEnvelopeGraph } from "./shared";
 import { genWindProblem, genDensityProblem, genWBProblem, PERF_PA_ROWS, PERF_OAT_COLS, perfGroundRoll, perfObstacleDist, genPerfProblem, genWeatherProblem, WX_LEGEND, genMetarTafProblem, METAR_LEGEND, genFuelProblem, buildWeatherProbes, buildMetarTafProbes, genCrosswindProblem, genTasProblem, genCGShiftProblem, genInstrumentProblem, polarToXY, describeArc, ASI_BANDS } from "../lib/calculators";
 
@@ -54,7 +54,7 @@ export function WindTriangleCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -120,7 +120,7 @@ export function DensityAltitudeCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 14, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 14, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -187,7 +187,7 @@ export function WeightBalanceCalc({ onExit }) {
       </div>
       <table style={{ width: "100%", fontSize: 12, marginBottom: 14, borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ borderBottom: `1px solid ${CONTOUR}66` }}>
+          <tr style={{ borderBottom: `1px solid ${CONTOUR_66}` }}>
             <th style={{ textAlign: "left", padding: "4px 0", color: MUTED, fontWeight: 600 }}>Item</th>
             <th style={{ textAlign: "right", padding: "4px 0", color: MUTED, fontWeight: 600 }}>Weight (lb)</th>
             <th style={{ textAlign: "right", padding: "4px 0", color: MUTED, fontWeight: 600 }}>Arm (in)</th>
@@ -195,7 +195,7 @@ export function WeightBalanceCalc({ onExit }) {
         </thead>
         <tbody>
           {problem.items.map((i, idx) => (
-            <tr key={idx} style={{ borderBottom: `1px solid ${CONTOUR}33` }}>
+            <tr key={idx} style={{ borderBottom: `1px solid ${CONTOUR_33}` }}>
               <td style={{ padding: "4px 0" }}>{i.label}</td>
               <td style={{ textAlign: "right", padding: "4px 0" }}>{i.weight}</td>
               <td style={{ textAlign: "right", padding: "4px 0" }}>{i.arm.toFixed(1)}</td>
@@ -229,7 +229,7 @@ export function WeightBalanceCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -302,7 +302,7 @@ export function PerformanceChartCalc({ onExit }) {
 
       <table style={{ width: "100%", fontSize: 11, marginBottom: 14, borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ borderBottom: `1px solid ${CONTOUR}66` }}>
+          <tr style={{ borderBottom: `1px solid ${CONTOUR_66}` }}>
             <th style={{ textAlign: "left", padding: "5px 4px", color: MUTED, fontWeight: 600 }}>PA (ft) \ OAT (°C)</th>
             {PERF_OAT_COLS.map((oat) => (
               <th key={oat} style={{ textAlign: "center", padding: "5px 4px", color: MUTED, fontWeight: 600 }}>{oat}°C</th>
@@ -311,7 +311,7 @@ export function PerformanceChartCalc({ onExit }) {
         </thead>
         <tbody>
           {PERF_PA_ROWS.map((pa) => (
-            <tr key={pa} style={{ borderBottom: `1px solid ${CONTOUR}33` }}>
+            <tr key={pa} style={{ borderBottom: `1px solid ${CONTOUR_33}` }}>
               <td style={{ padding: "5px 4px", fontWeight: 600 }}>{pa.toLocaleString()}</td>
               {PERF_OAT_COLS.map((oat) => (
                 <td key={oat} style={{ textAlign: "center", padding: "5px 4px" }}>
@@ -336,7 +336,7 @@ export function PerformanceChartCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -413,7 +413,7 @@ export function FuelPlanningCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -510,7 +510,7 @@ export function WeatherChartCalc({ onExit }) {
       <button
         onClick={() => setShowLegend((s) => !s)}
         className="mono"
-        style={{ fontSize: 11, color: CHART_BLUE, background: "none", border: `1px solid ${CHART_BLUE}66`, borderRadius: 3, padding: "5px 10px", cursor: "pointer", marginBottom: 16 }}
+        style={{ fontSize: 11, color: CHART_BLUE, background: "none", border: `1px solid ${CHART_BLUE_66}`, borderRadius: 3, padding: "5px 10px", cursor: "pointer", marginBottom: 16 }}
       >
         {showLegend ? "Hide code legend" : "Show code legend"}
       </button>
@@ -552,7 +552,7 @@ export function WeatherChartCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -652,7 +652,7 @@ export function MetarTafCalc({ onExit }) {
       <button
         onClick={() => setShowLegend((s) => !s)}
         className="mono"
-        style={{ fontSize: 11, color: CHART_BLUE, background: "none", border: `1px solid ${CHART_BLUE}66`, borderRadius: 3, padding: "5px 10px", cursor: "pointer", marginBottom: 16 }}
+        style={{ fontSize: 11, color: CHART_BLUE, background: "none", border: `1px solid ${CHART_BLUE_66}`, borderRadius: 3, padding: "5px 10px", cursor: "pointer", marginBottom: 16 }}
       >
         {showLegend ? "Hide code legend" : "Show code legend"}
       </button>
@@ -694,7 +694,7 @@ export function MetarTafCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -793,7 +793,7 @@ export function CrosswindCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -858,7 +858,7 @@ export function TasCalc({ onExit }) {
         <button
           onClick={() => setChecked(true)}
           className="chart-head"
-          style={{ marginTop: 16, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+          style={{ marginTop: 16, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
         >
           CHECK
         </button>
@@ -925,7 +925,7 @@ export function CGShiftCalc({ onExit }) {
 
       <table style={{ width: "100%", fontSize: 12, marginBottom: 14, borderCollapse: "collapse" }}>
         <thead>
-          <tr style={{ borderBottom: `1px solid ${CONTOUR}66` }}>
+          <tr style={{ borderBottom: `1px solid ${CONTOUR_66}` }}>
             <th style={{ textAlign: "left", padding: "4px 0", color: MUTED, fontWeight: 600 }}>Item</th>
             <th style={{ textAlign: "right", padding: "4px 0", color: MUTED, fontWeight: 600 }}>Weight (lb)</th>
             <th style={{ textAlign: "right", padding: "4px 0", color: MUTED, fontWeight: 600 }}>Arm (in)</th>
@@ -933,7 +933,7 @@ export function CGShiftCalc({ onExit }) {
         </thead>
         <tbody>
           {problem.items.map((i, idx) => (
-            <tr key={idx} style={{ borderBottom: `1px solid ${CONTOUR}33` }}>
+            <tr key={idx} style={{ borderBottom: `1px solid ${CONTOUR_33}` }}>
               <td style={{ padding: "4px 0" }}>{i.label}</td>
               <td style={{ textAlign: "right", padding: "4px 0" }}>{i.weight}</td>
               <td style={{ textAlign: "right", padding: "4px 0" }}>{i.arm.toFixed(1)}</td>
@@ -960,7 +960,7 @@ export function CGShiftCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
@@ -1153,7 +1153,7 @@ export function InstrumentCalc({ onExit }) {
       <button
         onClick={() => setChecked(true)}
         className="chart-head"
-        style={{ marginTop: 8, background: MAGENTA, color: "#F5F9F7", border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+        style={{ marginTop: 8, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "12px 18px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
       >
         CHECK
       </button>
