@@ -28,13 +28,54 @@ export function Modal({ onClose, maxWidth = 360, borderColor, children }) {
   );
 }
 
+// Segmented control used by each settings row below — a label plus a row of equal-width
+// choice buttons, the currently-selected one filled with the accent color.
+function SettingRow({ label, options, value, onChange }) {
+  return (
+    <div>
+      <div className="mono" style={{ fontSize: 11, color: MUTED, marginBottom: 8, letterSpacing: 0.5 }}>{label}</div>
+      <div style={{ display: "flex", gap: 8 }}>
+        {options.map((opt) => {
+          const isActive = value === opt.key;
+          return (
+            <button
+              key={opt.key}
+              onClick={() => onChange(opt.key)}
+              className="mono"
+              style={{
+                flex: 1,
+                fontSize: 12,
+                fontWeight: isActive ? 700 : 500,
+                padding: "8px 0",
+                borderRadius: 4,
+                cursor: "pointer",
+                border: `1.5px solid ${isActive ? MAGENTA : CONTOUR}`,
+                background: isActive ? MAGENTA : "none",
+                color: isActive ? ON_ACCENT : MUTED,
+              }}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // Built as a list of rows so future user-modifiable settings are just another row here,
-// not a redesign — "Appearance" is the only row today.
-export function SettingsModal({ mode, onModeChange, onClose }) {
-  const options = [
+// not a redesign.
+export function SettingsModal({ mode, onModeChange, quizLength, onQuizLengthChange, onClose }) {
+  const appearanceOptions = [
     { key: "system", label: "System" },
     { key: "light", label: "Light" },
     { key: "dark", label: "Dark" },
+  ];
+  const quizLengthOptions = [
+    { key: "all", label: "All" },
+    { key: "10", label: "10" },
+    { key: "20", label: "20" },
+    { key: "50", label: "50" },
   ];
   return (
     <Modal onClose={onClose} maxWidth={340}>
@@ -48,33 +89,9 @@ export function SettingsModal({ mode, onModeChange, onClose }) {
           <X size={18} />
         </button>
       </div>
-      <div>
-        <div className="mono" style={{ fontSize: 11, color: MUTED, marginBottom: 8, letterSpacing: 0.5 }}>APPEARANCE</div>
-        <div style={{ display: "flex", gap: 8 }}>
-          {options.map((opt) => {
-            const isActive = mode === opt.key;
-            return (
-              <button
-                key={opt.key}
-                onClick={() => onModeChange(opt.key)}
-                className="mono"
-                style={{
-                  flex: 1,
-                  fontSize: 12,
-                  fontWeight: isActive ? 700 : 500,
-                  padding: "8px 0",
-                  borderRadius: 4,
-                  cursor: "pointer",
-                  border: `1.5px solid ${isActive ? MAGENTA : CONTOUR}`,
-                  background: isActive ? MAGENTA : "none",
-                  color: isActive ? ON_ACCENT : MUTED,
-                }}
-              >
-                {opt.label}
-              </button>
-            );
-          })}
-        </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+        <SettingRow label="APPEARANCE" options={appearanceOptions} value={mode} onChange={onModeChange} />
+        <SettingRow label="QUIZ SESSION LENGTH" options={quizLengthOptions} value={quizLength} onChange={onQuizLengthChange} />
       </div>
     </Modal>
   );

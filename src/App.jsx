@@ -16,6 +16,7 @@ import { GlossaryPage } from "./components/Glossary";
 import { MockExamSetup, MockExamActive, MockExamResults } from "./components/MockExam";
 import { useAuth } from "./lib/useAuth";
 import { getStoredPreference, setStoredPreference, resolveTheme, applyResolvedTheme } from "./lib/themePreference";
+import { getStoredQuizLength, setStoredQuizLength, resolveQuizLength } from "./lib/quizPreference";
 
 function PPLGroundSchoolSectionalInner() {
   // Identity only — see lib/auth.js. Resolves to null wherever the SWA auth runtime
@@ -41,6 +42,14 @@ function PPLGroundSchoolSectionalInner() {
   const setTheme = (mode) => {
     setThemeMode(mode);
     setStoredPreference(mode);
+  };
+
+  // Device display preference — "all" | "10" | "20" | "50". Only affects quizzes started
+  // after the change; see lib/quizPreference.js.
+  const [quizLength, setQuizLengthState] = useState(getStoredQuizLength);
+  const setQuizLength = (key) => {
+    setQuizLengthState(key);
+    setStoredQuizLength(key);
   };
 
   const [progress, setProgress] = useState({});
@@ -318,7 +327,9 @@ function PPLGroundSchoolSectionalInner() {
       setMissedQuestions(restored.missed);
       setSessionTotal(restored.sessionTotal);
     } else {
-      setQuizQuestions(shuffleArray(QUIZ_BANK[category].map(shuffleQuestionOptions)));
+      const shuffled = shuffleArray(QUIZ_BANK[category].map(shuffleQuestionOptions));
+      const limit = resolveQuizLength(quizLength);
+      setQuizQuestions(limit ? shuffled.slice(0, limit) : shuffled);
       setQuizIndex(0);
       setQuizAnswer(null);
       setMissedQuestions([]);
@@ -550,7 +561,13 @@ function PPLGroundSchoolSectionalInner() {
         </div>
 
         {settingsOpen && (
-          <SettingsModal mode={themeMode} onModeChange={setTheme} onClose={() => setSettingsOpen(false)} />
+          <SettingsModal
+            mode={themeMode}
+            onModeChange={setTheme}
+            quizLength={quizLength}
+            onQuizLengthChange={setQuizLength}
+            onClose={() => setSettingsOpen(false)}
+          />
         )}
 
         {saveStatus === "unavailable" && (
