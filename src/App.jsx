@@ -1116,7 +1116,7 @@ function FullbleedHero({ doneCount, totalCount, legCheckpointX, planeX, legCompl
       </svg>
 
       <div style={{ position: "relative", padding: "18px 20px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span className="mono" style={{ fontSize: 11, letterSpacing: 1, color: MUTED }}>PPL WRITTEN EXAM PREP</span>
+        <span className="mono" style={{ fontSize: 11, letterSpacing: 1, color: MUTED }}>CANADIAN PPL WRITTEN EXAM PREP</span>
         <span className="mono" style={{ fontSize: 11, color: MAGENTA, border: `1px solid ${MAGENTA}`, borderRadius: 3, padding: "3px 8px", background: PANEL }}>{doneCount}/{totalCount} TOPICS</span>
       </div>
 
