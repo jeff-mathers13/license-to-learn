@@ -189,6 +189,14 @@ After drafting, sanity-check: could someone eliminate 2 of the 3 wrong answers j
    ```
    If a topic you wrote for still shows uncovered, your question's wording doesn't contain the search terms — either reword it or add the term to `syllabus-topics.json`. **Coverage % going up is the actual success metric for the batch.**
 11. Add any newly verified facts to `references/verified-facts.md`.
+11.5. **Update the hardcoded question count wherever it's displayed outside the app** — this number does not derive itself from `questions.js`, so a batch that changes the total silently makes these stale:
+   - `index.html`: `meta name="description"`, `og:description`, `twitter:description` (this is the number people see when the site link is shared in a text message, iMessage preview, or social post)
+   - `src/data/questions.js`'s own top-of-file comment
+   Get the true total with:
+   ```bash
+   grep -o '"[A-Z]\{2,3\}-[0-9]\{3\}"' src/data/questions.js | wc -l
+   ```
+   and replace every occurrence of the old count with the new one in the locations above (`grep -rn "OLD_COUNT" index.html src/data/questions.js` first to confirm you've found them all — a future session may have added the count somewhere new).
 12. **Commit the changes** — both the question additions in `src/data/questions.js` and any updates to this skill's own files (`syllabus-topics.json`, `verified-facts.md`, etc.) are just regular files in the repo now. A commit message like `quiz: close N Flight Operations gaps (coverage 84% -> 97%)` gives useful history for free. No separate packaging or re-upload step exists anymore — committing *is* how future sessions (and other contributors) get the update.
 13. Report back: **coverage before → after** (the headline number), how many questions added per section, and which specific syllabus topics are now closed.
 
