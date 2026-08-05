@@ -9,16 +9,15 @@ const LIGHT_META_COLOR = "#036676";
 export function getStoredPreference() {
   try {
     const saved = window.localStorage.getItem(THEME_KEY);
-    return saved === "light" || saved === "dark" ? saved : "system";
+    return saved === "light" || saved === "dark" || saved === "system" ? saved : "light";
   } catch {
-    return "system";
+    return "light";
   }
 }
 
 export function setStoredPreference(mode) {
   try {
-    if (mode === "system") window.localStorage.removeItem(THEME_KEY);
-    else window.localStorage.setItem(THEME_KEY, mode);
+    window.localStorage.setItem(THEME_KEY, mode);
   } catch {
     // best-effort; the in-memory state still reflects the choice for this session
   }
