@@ -446,6 +446,14 @@ function PPLGroundSchoolSectionalInner() {
     setExamSubmitConfirm(false);
   };
 
+  // Abandons an in-progress exam without recording it to history — distinct from newExam,
+  // which is only ever called after a submitted exam's results are already saved.
+  const abandonExam = () => {
+    setMockExam(null);
+    setExamQuestionIdx(0);
+    setExamSubmitConfirm(false);
+  };
+
   // Named so both direct taps and a confirmed tab-bar leave can call the same logic.
   const goHome = () => {
     // Leaving a finished review via the tab bar should tidy up the session the
@@ -508,12 +516,22 @@ function PPLGroundSchoolSectionalInner() {
   const planeX = routeStart + (overallPct / 100) * (routeEnd - routeStart);
   const legComplete = (w) => w.topics.every((t) => progress[t.id]?.done);
 
+  // Exam Readiness blends two sources: the latest per-category topic-quiz attempt, and the
+  // most recent completed mock exam's per-section score — so an exam attempt actually moves
+  // the readiness number instead of only ever reflecting topic quizzes.
   const sectionScores = computeSectionScores(quizAttempts);
-  const overallQuiz = Object.keys(quizAttempts).reduce(
-    (acc, cat) => {
-      const latest = latestAttempt(quizAttempts, cat);
-      return latest ? { correct: acc.correct + latest.correct, total: acc.total + latest.total } : acc;
-    },
+  const latestExam = mockExamHistory.length ? mockExamHistory[mockExamHistory.length - 1] : null;
+  if (latestExam) {
+    OFFICIAL_SECTIONS.forEach((section) => {
+      const s = latestExam.sectionScores[section];
+      if (s && s.total > 0) {
+        sectionScores[section].correct += s.correct;
+        sectionScores[section].total += s.total;
+      }
+    });
+  }
+  const overallQuiz = Object.values(sectionScores).reduce(
+    (acc, s) => ({ correct: acc.correct + s.correct, total: acc.total + s.total }),
     { correct: 0, total: 0 }
   );
   const overallQuizPct = overallQuiz.total ? Math.round((overallQuiz.correct / overallQuiz.total) * 100) : null;
@@ -725,6 +743,41 @@ function PPLGroundSchoolSectionalInner() {
             </div>
           </div>
         )}
+
+        {view === "syllabus" && mockExam && !mockExam.submitted && (() => {
+          const remainingSeconds = Math.max(0, Math.round(mockExam.durationMinutes * 60 - (Date.now() - Date.parse(mockExam.startedAt)) / 1000));
+          const mm = Math.floor(remainingSeconds / 60);
+          const ss = remainingSeconds % 60;
+          const lowTime = remainingSeconds <= 300;
+          const answeredCount = Object.keys(mockExam.answers).length;
+          return (
+            <div style={{ marginBottom: 16 }}>
+              <div className="paper-panel" style={{ borderRadius: 4, padding: "12px 16px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", border: lowTime ? `1px solid ${ERROR}` : undefined }}>
+                <span style={{ fontSize: 12 }}>
+                  Mock exam in progress: <strong>{answeredCount}/{mockExam.questions.length}</strong> answered
+                </span>
+                <span className="mono" style={{ fontSize: 13, fontWeight: 700, color: lowTime ? ERROR : INK, display: "flex", alignItems: "center", gap: 5 }}>
+                  <Clock size={13} color={lowTime ? ERROR : MUTED} />
+                  {String(mm).padStart(2, "0")}:{String(ss).padStart(2, "0")}
+                </span>
+                <button
+                  onClick={() => setView("exam")}
+                  className="mono"
+                  style={{ marginLeft: "auto", fontSize: 11, fontWeight: 700, color: OLIVE, background: "none", border: `1px solid ${OLIVE}`, borderRadius: 3, padding: "4px 10px", cursor: "pointer" }}
+                >
+                  RESUME
+                </button>
+                <button
+                  onClick={abandonExam}
+                  className="mono"
+                  style={{ fontSize: 11, color: MUTED, background: "none", border: `1px solid ${CONTOUR}`, borderRadius: 3, padding: "4px 10px", cursor: "pointer" }}
+                >
+                  DISCARD
+                </button>
+              </div>
+            </div>
+          );
+        })()}
 
         {view === "syllabus" && Object.keys(pausedQuizzes).length > 0 && (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>

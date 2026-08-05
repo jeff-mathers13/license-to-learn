@@ -157,26 +157,37 @@ export function MockExamActive({ exam, questionIdx, setQuestionIdx, onAnswer, on
           >
             ← PREV
           </button>
-          <button
-            onClick={() => setQuestionIdx(Math.min(exam.questions.length - 1, questionIdx + 1))}
-            disabled={questionIdx === exam.questions.length - 1}
-            className="mono"
-            style={{ fontSize: 12, color: questionIdx === exam.questions.length - 1 ? MUTED : INK, background: "none", border: `1px solid ${CONTOUR}`, borderRadius: 4, padding: "10px 16px", cursor: questionIdx === exam.questions.length - 1 ? "default" : "pointer", opacity: questionIdx === exam.questions.length - 1 ? 0.5 : 1 }}
-          >
-            NEXT →
-          </button>
+          {questionIdx < exam.questions.length - 1 ? (
+            <button
+              onClick={() => setQuestionIdx(questionIdx + 1)}
+              className="chart-head"
+              style={{ flex: 1, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "10px 16px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+            >
+              NEXT →
+            </button>
+          ) : (
+            <button
+              onClick={() => setSubmitConfirm(true)}
+              className="chart-head"
+              style={{ flex: 1, background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "10px 16px", fontWeight: 700, fontSize: 13, cursor: "pointer" }}
+            >
+              SUBMIT EXAM
+            </button>
+          )}
         </div>
       </div>
 
       <div style={{ marginTop: 18 }}>
         {!submitConfirm ? (
-          <button
-            onClick={() => setSubmitConfirm(true)}
-            className="chart-head"
-            style={{ width: "100%", background: MAGENTA, color: ON_ACCENT, border: "none", borderRadius: 4, padding: "14px 18px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}
-          >
-            SUBMIT EXAM
-          </button>
+          questionIdx < exam.questions.length - 1 && (
+            <button
+              onClick={() => setSubmitConfirm(true)}
+              className="mono"
+              style={{ width: "100%", background: "none", color: MUTED, border: `1px solid ${CONTOUR}`, borderRadius: 4, padding: "10px 18px", fontSize: 12, cursor: "pointer" }}
+            >
+              SUBMIT EXAM EARLY
+            </button>
+          )
         ) : (
           <div className="paper-panel" style={{ borderRadius: 4, padding: 18, border: `1px solid ${ERROR}` }}>
             <div style={{ display: "flex", gap: 10, marginBottom: 12 }}>
