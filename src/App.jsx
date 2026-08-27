@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef, Component } from "react";
-import { CheckCircle2, Circle, Clock, ChevronDown, ChevronRight, Target, BookOpen, RotateCcw, AlertTriangle, Settings } from "lucide-react";
+import { CheckCircle2, Circle, Clock, ChevronDown, ChevronRight, Target, BookOpen, RotateCcw, AlertTriangle, Settings, Plane, ClipboardList } from "lucide-react";
 import {
   INK, MUTED, PAPER, PANEL, CONTOUR, MAGENTA, CHART_BLUE, OLIVE,
   ERROR, ERROR_BG, SUCCESS_BG, ON_ACCENT, SURFACE, TRACK_BG, HOVER_BG, CONTOUR_33, CONTOUR_55, CHART_BLUE_66, MAGENTA_66,
@@ -14,6 +14,8 @@ import { QuizCard } from "./components/QuizCard";
 import { WindTriangleCalc, DensityAltitudeCalc, WeightBalanceCalc, PerformanceChartCalc, FuelPlanningCalc, WeatherChartCalc, MetarTafCalc, CrosswindCalc, TasCalc, CGShiftCalc, InstrumentCalc } from "./components/Calculators";
 import { GlossaryPage } from "./components/Glossary";
 import { MockExamSetup, MockExamActive, MockExamResults } from "./components/MockExam";
+import { FlightTestHome, FlightTestDrill, FlightTestDrillPicker, MyAircraftCard, FlightTestChecklist, FlightTestAssignments } from "./components/FlightTest";
+import { emptyFlightTestState, rehydrateFlightTest, serializeFlightTest } from "./lib/flightTest";
 import { useAuth } from "./lib/useAuth";
 import { getStoredPreference, setStoredPreference, resolveTheme, applyResolvedTheme } from "./lib/themePreference";
 import { getStoredQuizLength, setStoredQuizLength, resolveQuizLength } from "./lib/quizPreference";
@@ -76,6 +78,13 @@ function PPLGroundSchoolSectionalInner() {
   const [examSubmitConfirm, setExamSubmitConfirm] = useState(false);
   const [examTick, setExamTick] = useState(0); // forces re-render every second so the countdown updates
   const [examLeaveTarget, setExamLeaveTarget] = useState(null); // "syllabus" | "quiz" | "calc" | null — pending tab-bar nav away from an in-progress exam
+  // Which of the two tests is on screen. These are genuinely different exams studied in
+  // different ways, so they get a top-level switch rather than sharing a tab bar.
+  const [testMode, setTestMode] = useState("ppaer"); // "ppaer" | "flighttest"
+  const [flightTest, setFlightTest] = useState(emptyFlightTestState);
+  const [ftView, setFtView] = useState("home"); // home | drill | aircraft | checklist | assignments
+  const [ftSection, setFtSection] = useState(null); // section id being drilled, or null for the picker
+  const [ftMode, setFtMode] = useState("all"); // "all" | "needswork"
   const [saveStatus, setSaveStatus] = useState("idle"); // idle | saving | saved | error | unavailable
   // Gates the persist effect alongside `loaded`. Stays false while a signed-in user with
   // pre-existing local progress is deciding whether to import it, so an incidental state
@@ -160,6 +169,7 @@ function PPLGroundSchoolSectionalInner() {
           if (Array.isArray(parsed.mockExamHistory)) {
             setMockExamHistory(parsed.mockExamHistory);
           }
+          setFlightTest(rehydrateFlightTest(parsed.flightTest));
         }
         if (localRaw) {
           // Non-trivial local progress found with nothing in this (empty) remote account yet.
@@ -196,6 +206,7 @@ function PPLGroundSchoolSectionalInner() {
       setPausedQuizzes({});
       setMockExam(null);
       setMockExamHistory([]);
+      setFlightTest(emptyFlightTestState());
     }
     setMigrationOffer(null);
     setMigrationResolved(true);
@@ -262,8 +273,8 @@ function PPLGroundSchoolSectionalInner() {
 
   useEffect(() => {
     if (!loaded || !migrationResolved) return;
-    persist({ progress, examDate, quizAttempts, pausedQuizzes, mockExam: serializeExam(mockExam), mockExamHistory });
-  }, [progress, examDate, quizAttempts, pausedQuizzes, mockExam, mockExamHistory, loaded, migrationResolved, persist]);
+    persist({ progress, examDate, quizAttempts, pausedQuizzes, mockExam: serializeExam(mockExam), mockExamHistory, flightTest: serializeFlightTest(flightTest) });
+  }, [progress, examDate, quizAttempts, pausedQuizzes, mockExam, mockExamHistory, flightTest, loaded, migrationResolved, persist]);
 
   const allTopics = SYLLABUS.flatMap((w) => w.topics);
   const doneCount = allTopics.filter((t) => progress[t.id]?.done).length;
@@ -472,24 +483,96 @@ function PPLGroundSchoolSectionalInner() {
     setCalcCategory(null);
   };
 
+  // ── Flight test mutations ─────────────────────────────────────────────────
+  // Each writes one branch of the flightTest slice; the persist effect above picks the
+  // whole thing up and syncs it with everything else.
+  const rateFtCard = (cardId, rating) => {
+    setFlightTest((prev) => ({ ...prev, ratings: { ...prev.ratings, [cardId]: { r: rating, t: Date.now() } } }));
+  };
+  const noteFtCard = (cardId, text) => {
+    setFlightTest((prev) => {
+      const notes = { ...prev.notes };
+      if (text.trim()) notes[cardId] = text;
+      else delete notes[cardId];
+      return { ...prev, notes };
+    });
+  };
+  const setAircraftField = (fieldId, value) => {
+    setFlightTest((prev) => {
+      const aircraft = { ...prev.aircraft };
+      if (value.trim()) aircraft[fieldId] = value;
+      else delete aircraft[fieldId];
+      return { ...prev, aircraft };
+    });
+  };
+  const toggleFtChecklist = (rowId, colId) => {
+    setFlightTest((prev) => {
+      const row = { ...(prev.checklist[rowId] || {}) };
+      if (row[colId]) delete row[colId];
+      else row[colId] = true;
+      const checklist = { ...prev.checklist };
+      if (Object.keys(row).length) checklist[rowId] = row;
+      else delete checklist[rowId];
+      return { ...prev, checklist };
+    });
+  };
+  const setFtAssignment = (assignmentId, outputId, value) => {
+    setFlightTest((prev) => {
+      const a = { ...(prev.assignments[assignmentId] || {}) };
+      if (value.trim()) a[outputId] = value;
+      else delete a[outputId];
+      const assignments = { ...prev.assignments };
+      if (Object.keys(a).length) assignments[assignmentId] = a;
+      else delete assignments[assignmentId];
+      return { ...prev, assignments };
+    });
+  };
+
+  // Switching tests is gated the same way tab-bar navigation is — an exam in progress keeps
+  // counting down, so it gets the same warning rather than being silently left behind.
+  const switchTestMode = (mode) => {
+    if (mode === testMode) return;
+    if (mode === "flighttest") {
+      requestNav("flighttest", () => {
+        setTestMode("flighttest");
+        setFtView("home");
+        setFtSection(null);
+        setFtMode("all");
+      });
+    } else {
+      setTestMode("ppaer");
+    }
+  };
+
+  const openFtDrill = (sectionId, mode = "all") => {
+    setFtSection(sectionId);
+    setFtMode(mode);
+    setFtView("drill");
+  };
+  const exitFtDrill = () => {
+    setFtSection(null);
+    setFtMode("all");
+    setFtView("home");
+  };
+
   // Gates tab-bar navigation behind a confirmation only while an exam is actively in
   // progress and being viewed — moving between Quiz/Calc/Home while an exam merely sits
   // paused in the background (not currently on screen) doesn't need to nag every tap.
   const requestNav = (target, navFn) => {
-    const midExam = view === "exam" && mockExam && !mockExam.submitted;
+    const midExam = testMode === "ppaer" && view === "exam" && mockExam && !mockExam.submitted;
     if (midExam) {
-      setExamLeaveTarget(target);
+      // Hold onto the navigation itself rather than a string to switch on, so new
+      // destinations (the flight test section) don't need a matching case added here.
+      setExamLeaveTarget({ target, navFn });
     } else {
       navFn();
     }
   };
 
   const confirmExamLeave = () => {
-    const target = examLeaveTarget;
+    const pending = examLeaveTarget;
     setExamLeaveTarget(null);
-    if (target === "syllabus") goHome();
-    else if (target === "quiz") goQuiz();
-    else if (target === "calc") goCalc();
+    pending?.navFn?.();
   };
 
   const resetAll = async () => {
@@ -561,21 +644,24 @@ function PPLGroundSchoolSectionalInner() {
       `}</style>
 
       <div style={{ maxWidth: 880, margin: "0 auto", padding: "0 20px 100px" }}>
-        {/* Persistent save-status + auth row */}
-        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 14, paddingTop: 10 }}>
-          {(saveStatus === "saving" || saveStatus === "saved") && (
-            <span className="mono" style={{ fontSize: 11, color: MUTED }}>
-              {saveStatus === "saving" ? "SAVING…" : "SAVED"}
-            </span>
-          )}
-          <AuthStatus user={authUser} />
-          <button
-            onClick={() => setSettingsOpen(true)}
-            aria-label="Settings"
-            style={{ background: "none", border: "none", cursor: "pointer", color: MUTED, padding: 2, display: "flex" }}
-          >
-            <Settings size={16} />
-          </button>
+        {/* Test switcher + persistent save-status + auth row */}
+        <div style={{ display: "flex", alignItems: "center", gap: 14, paddingTop: 10, flexWrap: "wrap" }}>
+          <TestSwitcher mode={testMode} onChange={switchTestMode} />
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginLeft: "auto" }}>
+            {(saveStatus === "saving" || saveStatus === "saved") && (
+              <span className="mono" style={{ fontSize: 11, color: MUTED }}>
+                {saveStatus === "saving" ? "SAVING…" : "SAVED"}
+              </span>
+            )}
+            <AuthStatus user={authUser} />
+            <button
+              onClick={() => setSettingsOpen(true)}
+              aria-label="Settings"
+              style={{ background: "none", border: "none", cursor: "pointer", color: MUTED, padding: 2, display: "flex" }}
+            >
+              <Settings size={16} />
+            </button>
+          </div>
         </div>
 
         {settingsOpen && (
@@ -606,6 +692,7 @@ function PPLGroundSchoolSectionalInner() {
           </div>
         )}
 
+        {testMode === "ppaer" && (<>
         {view === "syllabus" && (
           <FullbleedHero
             doneCount={doneCount}
@@ -1140,6 +1227,51 @@ function PPLGroundSchoolSectionalInner() {
         {view === "exam" && mockExam && mockExam.submitted && (
           <MockExamResults exam={mockExam} onNewExam={newExam} />
         )}
+        </>)}
+
+        {testMode === "flighttest" && (<>
+          <FlightTestHeader />
+
+          {ftView === "home" && (
+            <FlightTestHome
+              state={flightTest}
+              onOpenSection={(id) => openFtDrill(id, "all")}
+              onOpenNeedsWork={() => openFtDrill(null, "needswork")}
+              onOpenAircraft={() => setFtView("aircraft")}
+              onOpenChecklist={() => setFtView("checklist")}
+              onOpenAssignments={() => setFtView("assignments")}
+            />
+          )}
+
+          {ftView === "drill" && ftSection === null && ftMode === "all" && (
+            <FlightTestDrillPicker
+              state={flightTest}
+              onPick={(id) => openFtDrill(id, "all")}
+              onPickNeedsWork={() => openFtDrill(null, "needswork")}
+            />
+          )}
+
+          {ftView === "drill" && (ftSection !== null || ftMode === "needswork") && (
+            <FlightTestDrill
+              key={`${ftSection || "all"}-${ftMode}`}
+              state={flightTest}
+              sectionId={ftSection}
+              mode={ftMode}
+              onRate={rateFtCard}
+              onNote={noteFtCard}
+              onExit={exitFtDrill}
+              onOpenAircraft={() => setFtView("aircraft")}
+            />
+          )}
+
+          {ftView === "aircraft" && (
+            <MyAircraftCard state={flightTest} onChange={setAircraftField} onClose={() => setFtView("home")} />
+          )}
+
+          {ftView === "checklist" && <FlightTestChecklist state={flightTest} onToggle={toggleFtChecklist} />}
+
+          {ftView === "assignments" && <FlightTestAssignments state={flightTest} onChange={setFtAssignment} />}
+        </>)}
 
         <div style={{ marginTop: 32, paddingTop: 16, borderTop: `1px solid ${CONTOUR_55}`, fontSize: 11, color: MUTED, lineHeight: 1.6 }}>
           <div>
@@ -1151,18 +1283,32 @@ function PPLGroundSchoolSectionalInner() {
         </div>
       </div>
 
-      <BottomTabBar
-        active={
-          view === "syllabus" ? "home" :
-          view === "quiz" || view === "review" ? "quiz" :
-          view === "exam" ? "exam" :
-          "calc"
-        }
-        onHome={() => requestNav("syllabus", goHome)}
-        onQuiz={() => requestNav("quiz", goQuiz)}
-        onCalc={() => requestNav("calc", goCalc)}
-        onExam={() => setView("exam")}
-      />
+      {testMode === "ppaer" ? (
+        <BottomTabBar
+          active={
+            view === "syllabus" ? "home" :
+            view === "quiz" || view === "review" ? "quiz" :
+            view === "exam" ? "exam" :
+            "calc"
+          }
+          onHome={() => requestNav("syllabus", goHome)}
+          onQuiz={() => requestNav("quiz", goQuiz)}
+          onCalc={() => requestNav("calc", goCalc)}
+          onExam={() => setView("exam")}
+        />
+      ) : (
+        <BottomTabBar
+          // "aircraft" is reached from Home and from inside a drill card rather than a tab
+          // of its own, so it keeps Home lit rather than leaving nothing selected.
+          active={ftView === "drill" ? "drill" : ftView === "checklist" ? "checklist" : ftView === "assignments" ? "plan" : "home"}
+          tabs={[
+            { key: "home", label: "HOME", icon: Plane, color: INK, onClick: () => { setFtView("home"); setFtSection(null); setFtMode("all"); } },
+            { key: "drill", label: "DRILL", icon: BookOpen, color: MAGENTA, onClick: () => { setFtView("drill"); setFtSection(null); setFtMode("all"); } },
+            { key: "plan", label: "PLAN", icon: Target, color: CHART_BLUE, onClick: () => setFtView("assignments") },
+            { key: "checklist", label: "CHECK", icon: ClipboardList, color: OLIVE, onClick: () => setFtView("checklist") },
+          ]}
+        />
+      )}
       {examLeaveTarget && (
         <Modal onClose={() => setExamLeaveTarget(null)} borderColor={ERROR}>
           <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
@@ -1189,6 +1335,60 @@ function PPLGroundSchoolSectionalInner() {
           </div>
         </Modal>
       )}
+    </div>
+  );
+}
+
+// Top-level switch between the two exams. They share an account and a sync payload but
+// nothing else — different formats, different study methods, different tab bars.
+function TestSwitcher({ mode, onChange }) {
+  const options = [
+    { key: "ppaer", label: "PPAER", title: "Written exam prep" },
+    { key: "flighttest", label: "FLIGHT TEST", title: "Flight test oral prep" },
+  ];
+  return (
+    <div style={{ display: "flex", border: `1px solid ${CONTOUR}`, borderRadius: 4, overflow: "hidden" }}>
+      {options.map((o) => {
+        const active = mode === o.key;
+        return (
+          <button
+            key={o.key}
+            onClick={() => onChange(o.key)}
+            title={o.title}
+            aria-pressed={active}
+            className="mono"
+            style={{
+              fontSize: 10.5,
+              fontWeight: active ? 700 : 500,
+              letterSpacing: 0.5,
+              padding: "6px 12px",
+              border: "none",
+              cursor: "pointer",
+              background: active ? MAGENTA : "none",
+              color: active ? ON_ACCENT : MUTED,
+            }}
+          >
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function FlightTestHeader() {
+  return (
+    <div style={{ padding: "18px 0 20px" }}>
+      <div className="mono" style={{ fontSize: 11, letterSpacing: 1, color: MUTED, marginBottom: 6 }}>
+        CANADIAN PPL FLIGHT TEST — GROUND PORTION
+      </div>
+      <div className="chart-head" style={{ fontSize: 30, fontWeight: 700, color: INK, lineHeight: 1.05 }}>
+        OPEN BOOK, OUT LOUD
+      </div>
+      <div style={{ fontSize: 13, color: MUTED, marginTop: 6, lineHeight: 1.6, maxWidth: 620 }}>
+        You'll have your references with you and an examiner asking questions. The skill isn't recall — it's
+        producing a defensible answer and knowing exactly where it came from.
+      </div>
     </div>
   );
 }

@@ -97,8 +97,10 @@ export function SettingsModal({ mode, onModeChange, quizLength, onQuizLengthChan
   );
 }
 
-export function BottomTabBar({ active, onHome, onQuiz, onCalc, onExam }) {
-  const tabs = [
+// `tabs` lets a caller supply its own destinations — the flight test section runs a
+// different set than the PPAER side. Omitting it keeps the original four.
+export function BottomTabBar({ active, onHome, onQuiz, onCalc, onExam, tabs: customTabs }) {
+  const tabs = customTabs || [
     { key: "home", label: "HOME", icon: Plane, onClick: onHome, color: INK },
     { key: "quiz", label: "QUIZ", icon: BookOpen, onClick: onQuiz, color: MAGENTA },
     { key: "calc", label: "CALC", icon: Target, onClick: onCalc, color: CHART_BLUE },
